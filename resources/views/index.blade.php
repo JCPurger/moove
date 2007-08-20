@@ -18,7 +18,7 @@
 			width: 15%;
 			height: 100%;
 			font-size: 16px;
-		    background-color: #212121;
+		    background-color: blue;
 		}
         
         #categorias .list-group .list-group-item{

@@ -42,15 +42,23 @@
 				            <li><a href="/lang/fr">@lang('navigation.frances')</a></li> 
 						</ul>
 					</li>
-					<form class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" class="form-control busca" placeholder="Busca">
+
+	<!--BUSCAR-->				
+					<form class="navbar-form navbar-right" action="">
+						
+
+							<input type="search" placeholder="Search">
+						
+
+							<!--<input type="text" class="form-control busca" placeholder="Busca">
 						</div>
 						<button type="submit" class="btn btn-default busca">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>                        
+						</button>   -->
+                     
 					</form>
 				</ul>  
+
 
 
 				<ul class="nav navbar-nav navbar-right"> 
@@ -120,7 +128,7 @@
 	@yield('content');
 		
  	<footer>
- 		Trabalho de Conclusão de Curso - Faeter-Rio - 2018
+ 		Trabalho de Conclusão de Curso - Faeterj-Rio - 2018
  	</footer>
 
  	{{-- MODAL --}}
