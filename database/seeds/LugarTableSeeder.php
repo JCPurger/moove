@@ -18,7 +18,7 @@ class LugarTableSeeder extends Seeder
             'categoria' => 'restaurante',
             'descricao' => 'descricao de teste 01',
             'imagem' => 'default.png',
-            'id_user' => 2,
+            'user_id' => 2,
         ]);
 
 
@@ -29,7 +29,7 @@ class LugarTableSeeder extends Seeder
             'categoria' => 'hospital',
             'descricao' => 'descricao de teste 02',
             'imagem' => 'default.png',
-            'id_user' => 2,
+            'user_id' => 2,
         ]);
 
 
@@ -40,7 +40,7 @@ class LugarTableSeeder extends Seeder
             'categoria' => 'restaurante',
             'descricao' => 'descricao de teste 03',
             'imagem' => 'default.png',
-            'id_user' => 2,
+            'user_id' => 2,
         ]);
 
     }

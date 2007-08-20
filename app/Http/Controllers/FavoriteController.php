@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Favorite;
+use App\User;
 
 class FavoriteController extends Controller
 {
@@ -11,9 +15,11 @@ class FavoriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return view('favorites');
+        $user = Auth::user();
+        $favorites = $user->favorites;
+        return view('favorites',['favorites' => $favorites]);
     }
 
     /**
@@ -34,7 +40,10 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = Place::find($request->id);
+        $user = Auth::user();
+        $user->favorites()->syncWithoutDetaching($place);
+        return response()->json("Favorito inserido com sucesso",200);
     }
 
     /**
@@ -81,4 +90,19 @@ class FavoriteController extends Controller
     {
         //
     }
+
+    public function toggleFavorite(Request $request)
+    {
+        $place = Place::find($request->id);
+        $res = Auth::user()->favorites()->toggle($place);
+        if (sizeof($res['attached'])) {
+            $msg = "Favorito inserido com sucesso";
+            $status = 1;
+        }else {
+            $msg = "Favorito removido com sucesso";
+            $status = 0;
+        }
+        return response()->json(['msg' => $msg,'status' => $status],200);
+    }
+
 }
