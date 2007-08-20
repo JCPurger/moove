@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     {{-- <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	
@@ -43,19 +44,9 @@
 						</ul>
 					</li>
 
-	<!--BUSCAR-->				
+			<!--BUSCAR-->				
 					<form class="navbar-form navbar-right" action="">
-						
-
-							<input type="search" placeholder="Search">
-						
-
-							<!--<input type="text" class="form-control busca" placeholder="Busca">
-						</div>
-						<button type="submit" class="btn btn-default busca">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>   -->
-                     
+							<input type="search" placeholder="Search">                     
 					</form>
 				</ul>  
 
@@ -122,6 +113,7 @@
 				</ul> 
 
 			</div><!-- /.navbar-collapse -->
+
 		</div><!-- /.container-fluid -->
 	</nav>
 
