@@ -1,3 +1,7 @@
-*{
-	color:red;
+.navbar{
+	background-color: #FF4209;
+}
+
+.navbar-inverse .navbar-nav>.active>a{
+	background-color: #001973;
 }
