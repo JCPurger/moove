@@ -1,7 +1,30 @@
-.navbar{
-	background-color: #FF4209;
+.navbar {
+	background-color: white;
+    font-family: 'Acme';
+    font-size: 20px;
 }
 
-.navbar-inverse .navbar-nav>.active>a{
-	background-color: #001973;
+.navbar-nav>.active>a {
+    background-color: orange;
 }
+
+
+.navbar .nav a:visited {
+    color: #4119BF;
+}
+
+li:hover, .active {
+    background-color: orange;
+}
+
+.busca {
+    font-size: 20px;  
+    color: #4119BF;
+}
+
+.brand {
+  padding: 0; 
+  width: 100px; 
+  height: 30px;
+}
+

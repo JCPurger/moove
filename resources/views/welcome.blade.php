@@ -20,19 +20,46 @@
 			float: right;
 			width: 15%;
 			height: 100%;
-		
+		    color: #4119BF;
 		}
 		#map {
 			height: 100%;
 			width: 85%;
 			float: left;
 		}
+        .tamanho {
+            width: 30%;
+            white-space: normal;
+        }
+        .btn-info {
+            background-color: #4119BF;
+        
+        }
+        h1 {
+            font-family: 'Acme';
+            color: orange;
+         
+        }
 	</style>
 
 
 	<div id="categorias">
-		<h1>Categorias</h1>
-	</div>
+          <div class="btn-group-vertical" role="group">
+                <h1>Categorias:</h1>
+                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
+                <button type="button" class="btn btn-info tamanho">Hospitais</button>
+                <button type="button" class="btn btn-info tamanho">Praças</button>
+                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
+                <button type="button" class="btn btn-info tamanho">Hospitais</button>
+                <button type="button" class="btn btn-info tamanho">Praças</button>
+                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
+                <button type="button" class="btn btn-info tamanho">Hospitais</button>
+                <button type="button" class="btn btn-info tamanho">Praças</button>
+            </div>
+    
+        </div>
+
+
 	<div id="map"></div>	
 
 @endsection
