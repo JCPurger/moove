@@ -39,14 +39,14 @@
 				</ul>
 				
 				 
-                    <form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <input type="text" class="form-control busca" placeholder="Busca">
-                        </div>
-                        <button type="submit" class="btn btn-default busca">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>                        
-                    </form>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control busca" placeholder="Busca">
+                    </div>
+                    <button type="submit" class="btn btn-default busca">
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>                        
+                </form>
 
                 <ul class="nav navbar-nav navbar-right"> 
                     <li><a href="/login">@lang('navigation.entrar')</a></li>
