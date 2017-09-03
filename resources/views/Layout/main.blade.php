@@ -4,13 +4,11 @@
 	<meta charset="utf-8">
 	<title>@yield('title')</title>
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
-	<style type="text/css">
-		.navbar{margin-bottom: 0px;border-radius: 0px;}
-		#conteiner{width: 100%;height:100%;}
-	</style>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+
+	<script src="/js/app.js"></script>
+    {{-- <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script> --}}
     
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
 </head>
@@ -47,13 +45,11 @@
                         </div>
                         <button type="submit" class="btn btn-default busca">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                        
-                        
+                        </button>                        
                     </form>
 
                 <ul class="nav navbar-nav navbar-right"> 
-                        <li><a href="/login">@lang('navigation.entrar')</a></li>
+                    <li><a href="/login">@lang('navigation.entrar')</a></li>
                 </ul> 
 
 			</div><!-- /.navbar-collapse -->
