@@ -13,22 +13,29 @@
 
 Use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/lang/{lang?}',function ($lang = null){
+	Session::put('lang',$lang);
+	return back();
 });
 
-Route::get('/quem-somos' ,function (){
-	return view('quem-somos');
-});
+Route::get('/{page?}','FrontendController@show');
 
-Route::get('/login' ,function (){
-	return view('login');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/duvidas' ,function (){
-	return view('duvidas');
-});
+// Route::get('/quem-somos' ,function (){
+// 	return view('quem-somos');
+// });
 
-Route::get('/contato' ,function (){
-	return view('contato');
-});
+// Route::get('/login' ,function (){
+// 	return view('login');
+// });
+
+// Route::get('/duvidas' ,function (){
+// 	return view('duvidas');
+// });
+
+// Route::get('/contato' ,function (){
+// 	return view('contato');
+// });

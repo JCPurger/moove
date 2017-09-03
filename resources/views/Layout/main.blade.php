@@ -20,28 +20,22 @@
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
 				<a class="navbar-brand" href="/"><img class="brand" src="/img/mov(fundo transparente).png" width="110px"></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				
-             <ul class="nav navbar-nav">
-					<li><a href="/quem-somos">Quem Somos</a></li>
-					<li><a href="/duvidas">Dúvidas</a></li>
-                    <li><a href="/contato">Contato</a></li>
+            	<ul class="nav navbar-nav">
+					<li><a href="/quem-somos">@lang('navigation.quem_somos')</a></li>
+					<li><a href="/duvidas">@lang('navigation.duvidas')</a></li>
+                    <li><a href="/contato">@lang('navigation.contato')</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Idioma <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@lang('navigation.idioma')<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Inglês</a></li>
-							<li><a href="#">Espanhol</a></li>
-							<li><a href="#">Francês</a></li>
+							<li><a href="/lang/pt-br">@lang('navigation.portugues')</a></li>
+							<li><a href="/lang/en">@lang('navigation.ingles')</a></li>
+							<li><a href="/lang/es">@lang('navigation.espanhol')</a></li>
+							<li><a href="/lang/fr">@lang('navigation.frances')</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -58,11 +52,10 @@
                         
                     </form>
 
-                   <ul class="nav navbar-nav navbar-right"> 
-                        <li><a href="/login">Entrar</a></li>
-                    </ul> 
-                
-		
+                <ul class="nav navbar-nav navbar-right"> 
+                        <li><a href="/login">@lang('navigation.entrar')</a></li>
+                </ul> 
+
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
