@@ -17,12 +17,17 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('email')->unique();
-            $table->string('senha');
-            $table->string('imagem_perfil');
-            $table->date('data_nascimento');
+            $table->string('password');
+            $table->string('imagem_perfil')->nullable();
+            $table->date('data_nascimento')->nullable();
+            $table->tinyInteger('tipo');
+            $table->string('cpf', 11)->nullable(); //11 caracteres
+            $table->string('cnpj', 14)->nullable(); //14 caracteres
+            $table->string('endereco')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
     }
 
     /**

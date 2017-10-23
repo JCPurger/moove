@@ -5,6 +5,7 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 5,
 		center: latlng,
+		gestureHandling: 'greedy',
 		zoomControl: true,
 		scaleControl: true,
 		streetViewControl: true,
@@ -12,6 +13,7 @@ function initMap() {
 		fullscreenControl: true,
 		mapTypeControl: true
 	});
+	
 
 	carregarPontos();
 }
@@ -19,6 +21,7 @@ function initMap() {
 function carregarPontos() {  
 	$.getJSON('/js/pontos.json', function(pontos) {
 		$.each(pontos, function(index, ponto) {
+
 			var icon = {
 			    url: "img/icon.png", // url
 			    scaledSize: new google.maps.Size(15, 15), // scaled size
@@ -36,7 +39,7 @@ function carregarPontos() {
 
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
-					infowindow.setContent("Conteúdo do marcador.");
+					infowindow.setContent('');
 					infowindow.open(map, marker);
 				}
 			})(marker))
@@ -46,16 +49,3 @@ function carregarPontos() {
 	});
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

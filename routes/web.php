@@ -10,14 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Use Illuminate\Http\Request;
 
+Route::post('/login','UserController@login');
+Route::post('/register','UserController@register');
+Route::get('/logout',function(){
+	Auth::logout();
+	return back();
+});
+
+/*TROCA A LINGUA*/
 Route::get('/lang/{lang?}',function ($lang = null){
 	Session::put('lang',$lang);
 	return back();
 });
-
-Route::post('/login','UserController@store');
 
 Route::get('/{page?}','FrontendController@show');

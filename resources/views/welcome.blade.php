@@ -12,16 +12,32 @@
 			width: 100%;
 			height: 100%;
 		}
+		
 		#content{
 			width: 100%;
 			height: 100%;
 		}
+
 		#categorias{
-			float: right;
+			float: left;
 			width: 15%;
 			height: 100%;
-		    color: #4119BF;
+			font-size: 16px;
+		    background-color: #212121;
 		}
+        
+        #categorias .list-group .list-group-item{
+        	border-radius: 10px !important;
+        	margin: 1px;
+        	background-color: rgba(0,0,0, .6);
+        	color: white;
+        	border: 0px !important;
+        }
+
+        #categorias .list-group .list-group-item:hover{
+        	background-color: rgba(255,255,255, .6);
+        }
+		
 		#map {
 			height: 100%;
 			width: 85%;
@@ -44,21 +60,18 @@
 
 
 	<div id="categorias">
-          <div class="btn-group-vertical" role="group">
-                <h1>Categorias:</h1>
-                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
-                <button type="button" class="btn btn-info tamanho">Hospitais</button>
-                <button type="button" class="btn btn-info tamanho">Praças</button>
-                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
-                <button type="button" class="btn btn-info tamanho">Hospitais</button>
-                <button type="button" class="btn btn-info tamanho">Praças</button>
-                <button type="button" class="btn btn-info tamanho">Restaurantes</button>
-                <button type="button" class="btn btn-info tamanho">Hospitais</button>
-                <button type="button" class="btn btn-info tamanho">Praças</button>
-            </div>
-    
-        </div>
-
+		<ul class="list-group">
+			<li class="list-group-item">Restaurantes<span class="badge">50</span></li> 
+			<li class="list-group-item">Hospitais<span class="badge">100+</span></li> 
+			<li class="list-group-item">Praças<span class="badge">5</span></li> 
+			<li class="list-group-item">Restaurantes<span class="badge">50</span></li> 
+			<li class="list-group-item">Hospitais<span class="badge">5</span></li> 
+			<li class="list-group-item">Praças<span class="badge">50</span></li> 
+			<li class="list-group-item">Restaurantes<span class="badge">3</span></li> 
+			<li class="list-group-item">Hospitais<span class="badge">3</span></li> 
+			<li class="list-group-item">Praças<span class="badge">3</span></li> 
+		</ul>
+	</div>
 
 	<div id="map"></div>	
 

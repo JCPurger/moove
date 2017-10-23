@@ -1,30 +1,26 @@
+body {
+  background-color: #FF8C00;
+}
+
 .navbar {
-  margin-bottom: 0px;border-radius: 0px;
-	background-color: white;
+  background-color: white;
+  margin-bottom: 0px;
   font-family: 'Acme';
-  font-size: 20px;
+  font-size: 21px;
+}
+.navbar ul li a {
+    padding-top: 23px;
+    color:orange;
 }
 
 #conteiner{
   width: 100%;
-  height:90%;
-}
-
-.navbar-nav>.active>a {
-    background-color: orange;
-}
-
-.navbar .nav a:visited {
-    color: orange;
-}
-
-li:hover, .active {
-    background-color: orange;
+  height:100%;
 }
 
 .busca {
     font-size: 20px;  
-    color: #4119BF;
+    color: #000080;
 }
 
 .brand {
@@ -32,34 +28,64 @@ li:hover, .active {
   width: 100px; 
   height: 30px;
 }
+ 
+.tamanho{
+    color: #000080;
+    background-color: #87CEEB;
+}
+
+#categorias{
+    width: 15%;
+    height: 100%;
+    color: #000080;
+    font-size: 10px;
+    font-family: 'Acme';
+}
 
 #form-cadas{
     font-family: 'Acme';
-    position: relative;
-    float: left;
-    width: 300px;
+    color: #000080;
+    width: 600px;
     height: 270px;
+    
     }
+
 #form-log{
+    color: #000080;
     font-family: 'Acme';
-    position: relative;
-    width: 300px;
-    height: 270px;
+    width: 600px;
+    height: 200px;
 }
-legend
-{
+
+legend{
     font-style:bold;
     font-family: 'Acme';
     text-align: center;
 }
-#form label
-{
-   
-}
 
-h1{   
-    color: orange;
+.titulo{   
+   color: #000080;
    font-family: 'Acme';
    text-align:  center;
 }
 
+hr{
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+}
+
+footer{
+    margin: auto;
+    width: 100%;
+    bottom: 0;
+    position: relative;
+    text-align: center;
+}
+         
+label.form {
+
+    display: inline-block;
+    width: 90px;
+}   

@@ -1,72 +1,80 @@
-@extends('layout.main')
-@section('title','Login')
+@extends("layout.main")
+@section("content")
+  <!--   Conteúdo    -->
+  <!-- Login -->
+  <h1 class="titulo">Venha se mover!</h1>
 
-@section('content')
-
-
-<script>
-    function pessoa(tipo){
-      if(tipo=="fisica"){
-        document.getElementById("fisica").style.display = "inline";
-        document.getElementById("juridica").style.display = "none";
-      }else if(tipo=="juridica"){
-        document.getElementById("fisica").style.display = "none";
-        document.getElementById("juridica").style.display = "inline";
-      }
-    }
-</script>
-
-<h1>Venha se mover!</h1>
-
-  <div class="row">
-    <div class="col-md-6 col-md-offset-5">
-      
-      <h3>Cadastre-se!</h3>
-      <p>
-        <input class="people" type="radio" name="optradio" value="juridica" onclick="pessoa(this.value);">Pessoa Juridica
-        <input class="people active" type="radio" name="optradio" value="fisica" onclick="pessoa(this.value);">Pessoa Fisica
-      </p>
-
-      <form action="/login" method="POST" id="juridica" style="display:none;">
-        {{ csrf_field() }}
-        <fieldset>
-          <label>Nome Fantasia: </label><input type="text" name="nomeFan"></br></br>
-          <label>CNPJ: </label><input type="text" name="cnpj"></br></br>
-          <label>Endereço: </label><input type="text" name="endereço"></br></br>
-          <label>Email: </label><input type="text" name="email"></br></br>
-          <label>Senha: </label><input type="text" name="senha"></br></br>
-          <input class="btn_submit" type="submit" name="Cadastrar">
-        </fieldset>
-      </form>
-
-      <form action="/login" method="POST" id="fisica">
-        {{ csrf_field() }}
-        <fieldset>
-          <label>Email: </label><input type="text" class="email" name="email"></br></br>
-          <label>CPF: </label><input type="text" class="cpf" name="cpf"></br></br>
-          <input class="btn_submit" type="submit" value="Cadastrar">
-        </fieldset>
-      </form>
-      
-    </div>
-  </div>
-
-<hr>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-5"> 
-      <h3>Login!</h3>
-      <form action="/login" method="POST">
-        {{ csrf_field() }}
-        <fieldset>
-          <label>Email: </label><input type="text" class="email" name="email"></br></br>
-          <label>Senha: </label><input type="text" class="senha" name="senha"></br></br>
+  <div id="form-log" class="container-fluid"  style="text-align:center; margin: 0 auto;">
+    <h3>Login!</h3>
+    <form action="/login" method="POST">
+        {{ csrf_field()  }}
+        <div class="form-group">
+          <label class="form">Email: </label><input name="email" type="text" class="email" size="30"></br></br>
+        </div>
+        <div class="form-group">
+          <label class="form">Senha: </label><input name="senha" type="password" class="senha" size="30"></br></br>
+        </div>
+        <div class="form-group">
+          <span class="error">{{ $failure or "" }} </span>
+        </div>
+        <div class="form-group">
           <input class="btn_submit" type="submit" value="Entrar">
-        </fieldset>
-      </form>
-    </div>
+        </div>
+    </form>
   </div>
-</div>
 
+  <hr>
+
+  <!--Cadastro -->
+  <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
+
+    <h3>Cadastre-se!</h3>
+    <h4> Comece nos dizendo se você é uma pessoa física ou jurídica, por favor :</h4>
+    <p class="tipo-pessoa">
+      <input id="inptJuridica" type="radio" name="optradio" value="juridica" >
+      <label for="inptJuridica"> Pessoa Juridica</label>
+      
+      <input id="inptFisica" type="radio" name="optradio" value="fisica" >
+      <label for="inptFisica">Pessoa Fisica</label>
+    </p>
+
+    <!-- Pessoa Jurídica -->
+    <form action="/register" method="POST" id="juridica" style="display:none;">
+      {{ csrf_field()  }}
+      <input type="hidden" name="tipo" value="1">
+      <label class="form">Nome Fantasia </label><input type="text" name="nome" size="30"></br>
+      <label class="form">CNPJ </label><input type="text" name="cnpj" size="30"></br>
+      <label class="form">Endereço </label><input type="text" name="endereço" size="30"></br>
+      <label class="form">Email </label><input type="text" name="email" size="30"></br>
+      <label class="form">Senha </label><input type="text" name="password" size="30"></br>
+      <input class="btn_submit" type="submit" name="cadastrar" value="Cadastrar">
+    </form>
+
+    <!-- Pessoa Física -->
+    <form  action="/register" method="POST" id="fisica" style="display:none;">
+      {{ csrf_field()  }}
+      <input type="hidden" name="tipo" value="2">
+      <label class="form">Nome Completo</label><input type="text" name="nome" size="30"></br>
+      <label class="form">CPF</label><input type="text" name="cpf" size="30"></br>
+      <label class="form">Email</label><input type="text" name="email" size="30"></br>
+      <label class="form">Senha</label><input type="text" name="password" size="30"></br>
+      <input class="btn_submit" type="submit" name="cadastrar" value="Cadastrar">
+    </form>
+
+  </div>
+@endsection
+
+{{-- sessao para scripts  --}}
+@section("scripts")
+  <script>
+    $('body').on('click', '.tipo-pessoa input', function(event) {
+      if($(this).attr("id") == "inptFisica"){
+        $("#juridica").css("display","none");
+        $("#fisica").css("display","inline");
+      }else if($(this).attr("id") == "inptJuridica"){
+        $("#fisica").css("display","none");
+        $("#juridica").css("display","inline");
+      }
+    });
+  </script>
 @endsection
