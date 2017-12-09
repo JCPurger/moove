@@ -4,27 +4,6 @@
   <!-- Login -->
   <h1 class="titulo">Venha se mover!</h1>
 
-  <div id="form-log" class="container-fluid"  style="text-align:center; margin: 0 auto;">
-    <h3>Login!</h3>
-    <form action="/login" method="POST">
-        {{ csrf_field()  }}
-        <div class="form-group">
-          <label class="form">Email: </label><input name="email" type="text" class="email" size="30"></br></br>
-        </div>
-        <div class="form-group">
-          <label class="form">Senha: </label><input name="senha" type="password" class="senha" size="30"></br></br>
-        </div>
-        <div class="form-group">
-          <span class="error">{{ $failure or "" }} </span>
-        </div>
-        <div class="form-group">
-          <input class="btn_submit" type="submit" value="Entrar">
-        </div>
-    </form>
-  </div>
-
-  <hr>
-
   <!--Cadastro -->
   <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
 

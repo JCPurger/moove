@@ -26,3 +26,14 @@ Route::get('/lang/{lang?}',function ($lang = null){
 });
 
 Route::get('/{page?}','FrontendController@show');
+
+
+//AREA DO USUARIO NORMAL
+Route::group(['middleware' => 'user'],function(){
+	Route::get('/point/create');	
+});
+
+//AREA DO USUARIO EMPRESA
+Route::group(['middleware' => 'company'],function(){
+	Route::get('/point/create');	
+});

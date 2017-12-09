@@ -12,13 +12,13 @@ class UserController extends Controller
     {
         $credentials = [
             'email' => $request->email,
-            'password' => $request->senha
-        ];
+            'password' => $request->password
+        ];        
         
-        if(Auth::attempt($credentials))
-            return view('login');
-        else
-            return view('login',['failure' => 'E-mail ou Senha incorreto']);
+        return response()->json([
+            'acess' => Auth::attempt($credentials),
+            'failure' => 'e-mail ou senha errado'
+        ],200);
     }
 
     public function register(Request $request)
