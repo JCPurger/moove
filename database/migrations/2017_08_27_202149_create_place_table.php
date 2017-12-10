@@ -15,11 +15,11 @@ class CreatePlaceTable extends Migration
     {
         Schema::create('lugar', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->float('latitude',18,3);
+            $table->float('longitude',18,3);
             $table->string('nome');
             $table->string('categoria');//FAZER OUTRA RELACAO PARA CATEGORIAS
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->text('descricao');
         });
     }
