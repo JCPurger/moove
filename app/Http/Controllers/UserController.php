@@ -23,7 +23,6 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request->all());
         User::create($request->all());
     }
 

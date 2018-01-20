@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Session;
+use Illuminate\Support\Facades\Storage;
+use App\Place;
 
 class FrontendController extends Controller
 {
@@ -15,7 +17,7 @@ class FrontendController extends Controller
      */
     public function index($lang = null)
     {
-        
+        return view('index');
     }
 
     /**
@@ -25,7 +27,19 @@ class FrontendController extends Controller
      */
     public function create()
     {
-        //
+        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1 
+        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS 
+        $places = Place::all();
+        $json = array();
+
+        foreach ($places as $key => $place) {
+            array_push($json,[
+                "place" => $place,
+                "template" => view('components.card')->with('place',$place)->render(),
+            ]);                
+        };
+
+        return response()->json($json,200);
     }
 
     /**
@@ -47,16 +61,13 @@ class FrontendController extends Controller
      */
     public function show($page = null)
     {   
-        $lang = Session::get('lang');
-        if($lang){
-            App::setLocale($lang);
-        }
+        App::setLocale(Session::get('lang'));
 
-        if(view()->exists($page)){
+        if(view()->exists($page))
             return view($page);
-        }else{
-            return view('welcome');
-        }
+        else
+            return redirect('/');
+
     }
 
     /**

@@ -14,14 +14,26 @@ function initMap() {
 		mapTypeControl: true
 	});
 	
+	map.addListener('bounds_changed', function(e) {
+		carregarPontos();
+	});
 
-	carregarPontos();
 }
 
-function carregarPontos() {  
-	$.getJSON('/js/pontos.json', function(pontos) {
+//	PEGA VIA AJAX OS PONTOS NO MAPA E OS CARREGA NO MAPA
+function carregarPontos() {
+	//setMapOnAll(null);  
+	$.ajax({
+		url: '/places',
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	})
+	.done(function(pontos) {
+		console.log(pontos[0].place);
 		$.each(pontos, function(index, ponto) {
-
 			var icon = {
 			    url: "img/icon.png", // url
 			    scaledSize: new google.maps.Size(15, 15), // scaled size
@@ -30,22 +42,66 @@ function carregarPontos() {
 			};
 
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(ponto.Latitude, ponto.Longitude),
-				title: "Meu ponto personalizado! :-D",
+				position: new google.maps.LatLng(ponto.place.latitude, ponto.place.longitude),
+				title: "Ponto "+ponto.place.id,
 				map: map
 			});
 
 			var infowindow = new google.maps.InfoWindow(), marker;
 
+			google.maps.event.addListener(infowindow, 'domready', function() {
+
+			   // Referência ao DIV que recebe o conteúdo da infowindow recorrendo ao jQuery
+			   var iwOuter = $('.gm-style-iw');
+
+			   /* Uma vez que o div pretendido está numa posição anterior ao div .gm-style-iw.
+			    * Recorremos ao jQuery e criamos uma variável iwBackground,
+			    * e aproveitamos a referência já existente do .gm-style-iw para obter o div anterior com .prev().
+			    */
+			    var iwBackground = iwOuter.prev();
+
+			   // Remover o div da sombra do fundo
+			   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+			   // Remover o div de fundo branco
+			   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+			   iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'overflow = hidden'});
+
+			   // Desloca a sombra da seta a 76px da margem esquerda 
+			   iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+				// Desloca a seta a 76px da margem esquerda 
+				iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+			   // Altera a cor desejada para o contorno da cauda.
+				// O contorno da cauda é composto por dois descendentes do div que contem a cauda.
+				// O método .find('div').children() faz referência a todos os div que sejam os descendentes directos do div anterior. 
+				iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+			});
+
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
 				return function() {
-					infowindow.setContent('');
+					infowindow.setContent(ponto.template);
 					infowindow.open(map, marker);
 				}
 			})(marker))
 
 		});
+	})
+	.fail(function() {
+		console.log("error get points-places");
+	})
+	.always(function() {
 
 	});
 
 }
+
+// Sets the map on all markers in the array.
+// function setMapOnAll(map) {
+// 	for (var i = 0; i < markers.length; i++) {
+// 	  markers[i].setMap(map);
+// 	}
+// }

@@ -12,6 +12,11 @@
 */
 Use Illuminate\Http\Request;
 
+Route::get('/','FrontendController@index');
+
+Route::post('/places','FrontendController@create');
+Route::get('/places','FrontendController@create');
+
 Route::post('/login','UserController@login');
 Route::post('/register','UserController@register');
 Route::get('/logout',function(){
@@ -19,14 +24,11 @@ Route::get('/logout',function(){
 	return back();
 });
 
-/*TROCA A LINGUA*/
+/*ROTA DE TROCA DE LINGUA*/
 Route::get('/lang/{lang?}',function ($lang = null){
 	Session::put('lang',$lang);
 	return back();
 });
-
-Route::get('/{page?}','FrontendController@show');
-
 
 //AREA DO USUARIO NORMAL
 Route::group(['middleware' => 'user'],function(){
@@ -37,3 +39,6 @@ Route::group(['middleware' => 'user'],function(){
 Route::group(['middleware' => 'company'],function(){
 	Route::get('/point/create');	
 });
+
+//ROTA PARA PAGINAS GENERICAS
+Route::get('/{page?}','FrontendController@show');
