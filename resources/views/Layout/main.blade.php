@@ -8,7 +8,7 @@
     <title>@yield('title')</title>
 
     <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/css/flow.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     
     <script src="/js/app.js"></script>
     <script src="/js/parsley.min.js"></script>
@@ -33,21 +33,21 @@
                 </a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
-                </a>
-            </li>            
-            <li class="dropdown">
-                <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')</a> 
-                {{-- <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')<b class="fa fa-angle-down"></b></a>  --}}
-                <ul class="dropdown-menu">
-                    <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+            <ul class="nav navbar-right top-nav">           
+                <li class="dropdown">
+                    @if (!Auth::check())
+                        <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')</a> 
+                    @else
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b class="fa fa-angle-down"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    @endif
+                </li>
+            </ul>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -70,7 +70,7 @@
                 <!--BUSCAR-->               
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
-                      <div id="custom-search-input">
+                        <div id="custom-search-input">
                             <div class="input-group col-md-12">
                                 <input type="text" class="  search-query form-control" placeholder="Search" />
                                 <span class="input-group-btn">
@@ -80,33 +80,14 @@
                                 </span>
                             </div>
                         </div>
-                  </div>
-              </form>
+                    </div>
+                </form>
                 <!--BUSCAR-->               
 
-            </ul>  
-            <ul id="sidebar" class="nav navbar-nav side-nav active">
-                <li class="sidebar-brand">
-                    <a id="menu-toggle" href="#">Categorias<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
-                </li>
-                <li>
-                    <a href="investigaciones/favoritas"><span class="badge">50</span>  CATEGORIA 3</a>
-                </li>
-                <li>
-                    <a href="sugerencias"><span class="badge">10</span> CATEGORIA 4</a>
-                </li>
-                <li>
-                    <a href="faq"><span class="badge">25</span> CATEGORIA 5</a>
-                </li>
-               {{--  <li>
-                    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  MENU 2 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                    <ul id="submenu-2" class="collapse">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.2</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.3</a></li>
-                    </ul>
-                </li> --}}
-            </ul>
+            </ul> 
+
+            @yield('sidebar') 
+
         </div>
         <!-- /.navbar-collapse -->
     </nav>
@@ -124,7 +105,7 @@
     <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
 
-{{-- MODAL --}}
+{{-- MODAL LOGIN --}}
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
@@ -142,13 +123,9 @@
         </div>
     </div>
 </div>
-{{-- MODAL --}}
-
-</body>
-
+{{-- MODAL LOGIN --}}
 
 @yield("scripts")
-
 <script type="text/javascript">
     $(document).ready(function(){
         $('#login-form').parsley();
@@ -193,4 +170,5 @@
     });
 </script>
 
+</body>
 </html>

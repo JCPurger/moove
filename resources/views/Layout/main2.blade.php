@@ -54,45 +54,6 @@
 
 				<ul class="nav navbar-nav navbar-right"> 
 					@if (Auth::check())
-						{{-- <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="glyphicon glyphicon-user"></span> 
-								<strong>{{ Auth::user()->nome }}</strong>
-								<span class="glyphicon glyphicon-chevron-down"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="navbar-login">
-										<div class="row">
-											<div class="col-lg-4">
-												<p class="text-center">
-													<img class="icon-size" src="/img/perfil.jpg">
-												</p>
-											</div>
-											<div class="col-lg-8">
-												<p class="text-left"><strong>{{ Auth::user()->nome }}</strong></p>
-												<p class="text-left small">{{ Auth::user()->email }}</p>
-												<p class="text-left">
-													<a href="#" class="btn btn-primary btn-block btn-sm">Atualizar os dados</a>
-												</p>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="navbar-login navbar-login-session">
-										<div class="row">
-											<div class="col-lg-12">
-												<p>
-													<a href="/logout" class="btn btn-danger btn-block">Sair da sessão</a>
-												</p>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</li> --}}
 						<li class="dropdown dropdown-user">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }}<span class="glyphicon glyphicon-user pull-right"></span></a>
 							<ul class="dropdown-menu">

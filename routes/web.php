@@ -26,7 +26,7 @@ Route::get('/logout',function(){
 
 /*ROTA DE TROCA DE LINGUA*/
 Route::get('/lang/{lang?}',function ($lang = null){
-	Session::put('lang',$lang);
+	Session::put('locale',$lang);
 	return back();
 });
 
