@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     
-    <title>@yield('title')</title>
+    <title>FLOW</title>
 
     <link rel="stylesheet" type="text/css" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/flow.css">
     
-    <script src="/js/app.js"></script>
-    <script src="/js/parsley.min.js"></script>
     <script src="/js/flow.js"></script>
 </head>
 <body>
@@ -38,8 +36,7 @@
                 </a>
             </li>            
             <li class="dropdown">
-                <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')</a> 
-                {{-- <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')<b class="fa fa-angle-down"></b></a>  --}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                     <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
@@ -85,27 +82,32 @@
                 <!--BUSCAR-->               
 
             </ul>  
-            <ul id="sidebar" class="nav navbar-nav side-nav active">
-                <li class="sidebar-brand">
-                    <a id="menu-toggle" href="#">Categorias<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a>
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> MENU 1 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-1" class="collapse">
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.1</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.3</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="investigaciones/favoritas"><span class="badge">50</span>  CATEGORIA 3</a>
-                </li>
-                <li>
-                    <a href="sugerencias"><span class="badge">10</span> CATEGORIA 4</a>
-                </li>
-                <li>
-                    <a href="faq"><span class="badge">25</span> CATEGORIA 5</a>
-                </li>
-               {{--  <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  MENU 2 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-2" class="collapse">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.2</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.3</a></li>
                     </ul>
-                </li> --}}
+                </li>
+                <li>
+                    <a href="investigaciones/favoritas"><i class="fa fa-fw fa-user-plus"></i>  MENU 3</a>
+                </li>
+                <li>
+                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
+                </li>
+                <li>
+                    <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -115,7 +117,7 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row" id="main" >
-                @yield('content');
+               <div id="map"></div>    
             </div>
             <!-- /.row -->
         </div>
@@ -123,74 +125,10 @@
     </div>
     <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
-
-{{-- MODAL --}}
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Entre com sua conta</h1><br>
-            <form id="login-form">
-                {{ csrf_field() }}
-                <input type="text" data-parsley-type="email" data-parsley-errors-messages-disabled name="email" placeholder="E-mail" required>
-                <input type="password" data-parsley-errors-messages-disabled name="password" placeholder="Senha" required>
-                <input type="submit" name="login" class="login loginmodal-submit" value="Entrar" id="login-submit">
-            </form>
-
-            <div class="login-help">
-                <a href="/login">Registrar-se</a> - <a href="#">Esqueci a senha</a>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- MODAL --}}
-
 </body>
 
-
-@yield("scripts")
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#login-form').parsley();
-
-
-        $('#login-form').submit(function(event) {
-            event.preventDefault();
-
-            // PEGA AS INFORMAÇÕES DO FORMULÁRIO
-            var formData = {
-                'email' : $('input[name=email]').val(),
-                'password' : $('input[name=password]').val()
-            };
-
-            $.ajax({
-                url: '/login',
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-            .done(function(data) {
-                if(data.acess){
-                    $('#login-modal').modal('hide');
-                    location.reload();
-                }else{
-                    if( !($('#login-form input[name=password]').next().get(0) == $('#login-form span').get(0)) ){
-                        $('#login-form input[name=password]').after('<span>'+ data.failure +'</span>');
-                    }
-                }
-            })
-            .fail(function() {
-                console.log("fail");
-            })
-            .always(function(data) {
-                console.log("complete");
-            });
-            
-        });
-    });
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-VqnebGrmB1-1Fft60pG-_yYvvQ4kcLE&callback=initMap">
 </script>
+<script src="/js/mapa.js"></script> 
 
 </html>

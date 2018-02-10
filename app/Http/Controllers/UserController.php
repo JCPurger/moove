@@ -23,6 +23,8 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
+        $users = User::paginate(10);
+        dd($users);
         User::create($request->all());
     }
 

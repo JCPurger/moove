@@ -18,7 +18,7 @@ Route::post('/places','FrontendController@create');
 Route::get('/places','FrontendController@create');
 
 Route::post('/login','UserController@login');
-Route::post('/register','UserController@register');
+Route::get('/register','UserController@register');
 Route::get('/logout',function(){
 	Auth::logout();
 	return back();
