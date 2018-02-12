@@ -19,7 +19,7 @@
     <div id="noty-holder"></div>
     <div id="wrapper">
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -36,7 +36,7 @@
             <ul class="nav navbar-right top-nav">           
                 <li class="dropdown">
                     @if (!Auth::check())
-                        <a href="#" data-toggle="modal" data-target="#login-modal">@lang('navigation.entrar')</a> 
+                        <a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> @lang('navigation.entrar')</a> 
                     @else
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
@@ -50,7 +50,7 @@
             </ul>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="menu">
                 <li><a href="/quem-somos">@lang('navigation.quem_somos')</a></li> 
                 <li><a href="/duvidas">@lang('navigation.duvidas')</a></li> 
                 <li><a href="/contato">@lang('navigation.contato')</a></li> 
