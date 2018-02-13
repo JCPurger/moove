@@ -12,6 +12,8 @@
 }
 
 #page-wrapper {
+    position: fixed;
+    height: 100%;
     width: 100%;        
     padding: 0;
     background-color: #fff;
@@ -19,7 +21,7 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 225px;
+        padding-left: 0px;
     }
 
     #page-wrapper {
@@ -72,6 +74,13 @@
     white-space: normal;
 }
 
+@media (max-width: 768px) {
+  .navbar-right{
+    display: none;
+  }
+
+}
+
 /* Side Navigation */
 
 @media(min-width:768px) {
@@ -118,8 +127,10 @@
     }
 
     .badge {
-      background-color: #e8580c;
+      color: #fff;
+      background-color: #220d66;
     }
+
 }
 
 .side-nav>li>ul {
@@ -200,6 +211,7 @@
     overflow: hidden;
 }
 
+
 /****** LOGIN MODAL ******/
 .loginmodal-container {
   padding: 30px;
@@ -217,6 +229,7 @@
   text-align: center;
   font-size: 1.8em;
   font-family: roboto;
+  color: #e8580c;
 }
 
 .loginmodal-container input[type=submit] {
@@ -267,7 +280,7 @@ user-select: none; */
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  background-color: #220d66;
   padding: 17px 0px;
   font-family: roboto;
   font-size: 18px;
@@ -304,3 +317,5 @@ user-select: none; */
   border: 1px solid red !important;
   outline: none;
 }
+
+/*****CADASTRO*****/

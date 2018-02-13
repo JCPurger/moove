@@ -1,8 +1,9 @@
 @extends("layout.main")
 @section("content")
+
   <!--   Conteúdo    -->
   <!-- Login -->
-  <h1 class="titulo">Venha se mover!</h1>
+ <!-- <h1 class="titulo">Venha se mover!</h1> -->
 
   <!--Cadastro -->
   <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
