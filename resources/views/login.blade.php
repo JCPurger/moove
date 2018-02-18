@@ -3,18 +3,19 @@
 
   <!--   Conteúdo    -->
   <!-- Login -->
- <!-- <h1 class="titulo">Venha se mover!</h1> -->
+ 
 
   <!--Cadastro -->
   <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
+    
+    <h1 class="titulo">Venha se mover!</h1>
 
-    <h3>Cadastre-se!</h3>
-    <h4> Comece nos dizendo se você é uma pessoa física ou jurídica, por favor :</h4>
+    <h5> * Preenchimento obrigatório</h5>
     <p class="tipo-pessoa">
       <input id="inptJuridica" type="radio" name="optradio" value="juridica" >
       <label for="inptJuridica"> Pessoa Juridica</label>
       
-      <input id="inptFisica" type="radio" name="optradio" value="fisica" >
+      <input id="inptFisica" type="radio" name="optradio" value="fisica" checked="">
       <label for="inptFisica">Pessoa Fisica</label>
     </p>
 
@@ -22,23 +23,37 @@
     <form action="/register" method="POST" id="juridica" style="display:none;">
       {{ csrf_field()  }}
       <input type="hidden" name="tipo" value="1">
-      <label class="form">Nome Fantasia </label><input type="text" name="nome" size="30"></br>
-      <label class="form">CNPJ </label><input type="text" name="cnpj" size="30"></br>
-      <label class="form">Endereço </label><input type="text" name="endereço" size="30"></br>
-      <label class="form">Email </label><input type="text" name="email" size="30"></br>
-      <label class="form">Senha </label><input type="text" name="password" size="30"></br>
-      <input class="btn_submit" type="submit" name="cadastrar" value="Cadastrar">
+      <label class="form">Nome Fantasia </label><input type="text" name="nome" required="" size="30"></br>
+      <label class="form">CNPJ </label><input type="text" name="cnpj" required="" size="30"></br>
+      <label class="form">Endereço </label><input type="text" name="endereço" required="" size="30"></br>
+      <label class="form">Email </label><input type="text" name="email" required="" size="30"></br>
+      <label class="form">Senha </label><input type="text" name="password" required="" size="30"></br>
+     
+      <label class="form">Link </label><input type="text" name="link" required="" size="30"></br>
+
+       <label class="form">Categoria </label>
+        <select required="">
+          <option>Categoria 1</option>
+          <option>Categoria 2</option>
+          <option>Categoria 3</option>
+      </select>
+
+      <label class="form">Foto de Capa <input type="file" name="imagem" required="" size="30"></label></br>
+
+       <label class="form">Descrição </label><textarea name="descriçao" required="" size="80"></textarea></br>
+
+      <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
     </form>
 
     <!-- Pessoa Física -->
-    <form  action="/register" method="POST" id="fisica" style="display:none;">
+    <form  action="/register" method="POST" id="fisica" style="display:fixed;">
       {{ csrf_field()  }}
       <input type="hidden" name="tipo" value="2">
-      <label class="form">Nome Completo</label><input type="text" name="nome" size="30"></br>
+      <label class="form">Nome</label><input type="text" name="nome" size="30"></br>
       <label class="form">CPF</label><input type="text" name="cpf" size="30"></br>
       <label class="form">Email</label><input type="text" name="email" size="30"></br>
       <label class="form">Senha</label><input type="text" name="password" size="30"></br>
-      <input class="btn_submit" type="submit" name="cadastrar" value="Cadastrar">
+      <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
     </form>
 
   </div>
@@ -57,4 +72,21 @@
       }
     });
   </script>
+@endsection
+
+
+{{-- Verificar se está certo --}}
+@section("php")
+<?php
+   if(isset($_FILES['imagem']))
+   {
+      date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+
+      $ext = strtolower(substr($_FILES['imagem']['name'],-4)); //Pegando extensão do arquivo
+      $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+      $dir = 'uploads/'; //Diretório para uploads
+
+      move_uploaded_file($_FILES['imagem']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+   }
+?>
 @endsection

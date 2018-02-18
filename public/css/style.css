@@ -319,3 +319,23 @@ user-select: none; */
 }
 
 /*****CADASTRO*****/
+
+label.form{
+  display: inline-block;
+  width: 110px;
+}
+
+.btn-submit{
+  background-color: #220D66;
+  color: #fff;
+  font-family: sans-serif;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+h1{
+  color: #e8580ce6;
+}
+h5{
+  color: red;
+}
