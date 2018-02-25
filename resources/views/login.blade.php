@@ -9,8 +9,8 @@
   <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
     
     <h1 class="titulo">Venha se mover!</h1>
-
-    <h5> * Preenchimento obrigatório</h5>
+    <h5>Preencha todos os campos</h5>
+    
     <p class="tipo-pessoa">
       <input id="inptJuridica" type="radio" name="optradio" value="juridica" >
       <label for="inptJuridica"> Pessoa Juridica</label>
@@ -26,21 +26,22 @@
       <label class="form">Nome Fantasia </label><input type="text" name="nome" required="" size="30"></br>
       <label class="form">CNPJ </label><input type="text" name="cnpj" required="" size="30"></br>
       <label class="form">Endereço </label><input type="text" name="endereço" required="" size="30"></br>
-      <label class="form">Email </label><input type="text" name="email" required="" size="30"></br>
-      <label class="form">Senha </label><input type="text" name="password" required="" size="30"></br>
+      <label class="form">Email </label><input type="email" name="email" required="" size="30"></br>
+      <label class="form">Senha </label><input type=password" name="password" required="" size="30"></br>
      
       <label class="form">Link </label><input type="text" name="link" required="" size="30"></br>
 
        <label class="form">Categoria </label>
-        <select required="">
+        <select id="appearance-select" required="">
+          <option selected="" disabled="">Caterogias</option>
           <option>Categoria 1</option>
           <option>Categoria 2</option>
           <option>Categoria 3</option>
-      </select>
+      </select> </br></br>
 
-      <label class="form">Foto de Capa <input type="file" name="imagem" required="" size="30"></label></br>
+       <label class="form">Descrição </label><textarea id="msg"rows="3" cols="30" maxlength="50" name="descriçao" required="" size="80"></textarea></br></br>
 
-       <label class="form">Descrição </label><textarea name="descriçao" required="" size="80"></textarea></br>
+       <label class="form">Foto de Capa </label><label><input type="file" name="imagem" required="" size="30"></label></br>
 
       <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
     </form>
@@ -51,8 +52,9 @@
       <input type="hidden" name="tipo" value="2">
       <label class="form">Nome</label><input type="text" name="nome" size="30"></br>
       <label class="form">CPF</label><input type="text" name="cpf" size="30"></br>
-      <label class="form">Email</label><input type="text" name="email" size="30"></br>
-      <label class="form">Senha</label><input type="text" name="password" size="30"></br>
+      <label class="form">Email </label><input type="email" name="email" required="" size="30"></br>
+      <label class="form">Senha </label><input type=password" name="password" required="" size="30"></br></br>
+      <label class="form">Foto do Perfil </label><label><input type="file" name="imagem" required="" size="30"></label></br>
       <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
     </form>
 

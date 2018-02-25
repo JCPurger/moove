@@ -323,8 +323,7 @@ user-select: none; */
 label.form{
   display: inline-block;
   width: 110px;
-}
-
+} 
 .btn-submit{
   background-color: #220D66;
   color: #fff;
@@ -332,10 +331,16 @@ label.form{
   margin-top: 15px;
   border-radius: 10px;
 }
-
 h1{
   color: #e8580ce6;
 }
 h5{
   color: red;
+}
+#appearance-select{  
+   width: 230px;
+   height:30px; 
+}
+#msg{
+  resize: none;
 }
