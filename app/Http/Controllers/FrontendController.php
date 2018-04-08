@@ -60,14 +60,11 @@ class FrontendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($page = null)
-    {   
-        App::setLocale(Session::get('lang'));
-
-        if(view()->exists($page))
-            return view($page);
+    {
+        if(view()->exists('temp/'.$page))
+            return view('temp/'.$page);
         else
             return redirect('/');
-
     }
 
     /**
