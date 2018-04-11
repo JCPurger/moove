@@ -3,10 +3,9 @@
 		<div class="col-md-6">				
 			<div class="panel panel-default  panel--styled">
 				<div class="panel-body">
-					<button type="button" class="close">&times;</button>
 					<div class="col-md-12 panelTop">	
 						<div class="col-md-3">	
-							<img class="img-responsive" src="disability.png" width="250px" height="250px"/>
+							<img class="img-responsive" src="{{ asset('img/icon.png') }}" width="250px" height="250px"/>
 						</div>
 						<div class="col-md-8">	
 							<h2>{{ $place->nome }}</h2>

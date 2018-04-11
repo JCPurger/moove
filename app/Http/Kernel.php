@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'company' => \App\Http\Middleware\CompanyLoged::class,
         'user' => \App\Http\Middleware\UserLoged::class,
+        'verifyLang' => \App\Http\Middleware\VerifyLang::class,
     ];
 }

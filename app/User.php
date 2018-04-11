@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'usuario';
+    protected $table = 'user';
 
     public function setPasswordAttribute($value)
     {
@@ -33,4 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
+
+    public function posts()
+    {
+        return $this->belongsToMany('App\Comment');
+    }
 }

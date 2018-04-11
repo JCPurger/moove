@@ -10,6 +10,11 @@ use App\Place;
 
 class FrontendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verifyLang');
+    }
+
     /**
      * Display a listing of the resource.
      *

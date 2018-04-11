@@ -13,7 +13,7 @@ function initMap() {
 		fullscreenControl: true,
 		mapTypeControl: true
 	});
-	
+
 	map.addListener('bounds_changed', function(e) {
 		carregarPontos();
 	});
@@ -22,7 +22,7 @@ function initMap() {
 
 //	PEGA VIA AJAX OS PONTOS NO MAPA E OS CARREGA NO MAPA
 function carregarPontos() {
-	//setMapOnAll(null);  
+	//setMapOnAll(null);
 	$.ajax({
 		url: '/places',
 		type: 'POST',
@@ -32,8 +32,8 @@ function carregarPontos() {
 		}
 	})
 	.done(function(pontos) {
-		console.log(pontos[0].place);
 		$.each(pontos, function(index, ponto) {
+			console.log(ponto.template);
 			var icon = {
 			    url: "img/icon.png", // url
 			    scaledSize: new google.maps.Size(15, 15), // scaled size
@@ -68,16 +68,19 @@ function carregarPontos() {
 
 			   iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'overflow = hidden'});
 
-			   // Desloca a sombra da seta a 76px da margem esquerda 
+			   // Desloca a sombra da seta a 76px da margem esquerda
 			   iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
 
-				// Desloca a seta a 76px da margem esquerda 
+				// Desloca a seta a 76px da margem esquerda
 				iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
 
 			   // Altera a cor desejada para o contorno da cauda.
 				// O contorno da cauda é composto por dois descendentes do div que contem a cauda.
-				// O método .find('div').children() faz referência a todos os div que sejam os descendentes directos do div anterior. 
+				// O método .find('div').children() faz referência a todos os div que sejam os descendentes directos do div anterior.
 				iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+                iwOuter.children().children().css({'overflow' : 'hidden'});
+                iwOuter.next().css({'right' : '126px','top' : '43px'});
 
 			});
 

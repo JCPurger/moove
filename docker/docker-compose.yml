@@ -1,0 +1,44 @@
+version: '2'
+networks:
+  web:
+  banco:
+services:
+  web:
+    image: webdevops/php-nginx-dev:7.1
+    ports:
+      - 80:80
+    volumes:
+      - ../:/app
+    working_dir: /app
+    networks:
+      - web
+      - banco
+    links:
+      - mysql
+    environment:
+      PHP_DISPLAY_ERRORS: 1
+      PHP_UPLOAD_MAX_FILESIZE: 240M
+      WEB_DOCUMENT_ROOT: /app/public
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - banco
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: moove
+  workspace:
+    build: workspace
+    volumes:
+      - ../:/app
+    working_dir: /app
+    networks:
+      - web
+      - banco
+    depends_on:
+      - web
+    links:
+      - mysql
