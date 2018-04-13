@@ -12,17 +12,21 @@
 */
 Use Illuminate\Http\Request;
 
+//ROTA DE AUTENTICACAO
 Auth::routes();
 
 Route::get('/','FrontendController@index');
-Route::post('/places','FrontendController@create');
-Route::get('/places','FrontendController@create');
 
 /*ROTA DE TROCA DE LINGUA*/
 Route::get('/lang/{lang?}',function ($lang = null){
-	Session::put('lang',$lang);
-	return back();
+    Session::put('lang',$lang);
+    return back();
 });
+
+//API PLACES
+Route::post('/places','PlacesController@apiAllPlaces')->name('postAllPlaces');
+Route::get('/places','PlacesController@apiAllPlaces');
+
 
 //AREA DO USUARIO NORMAL
 Route::group(['middleware' => 'user'],function(){
@@ -34,7 +38,7 @@ Route::group(['middleware' => 'company'],function(){
 	Route::get('/point/create');
 });
 
-//ROTA PARA PAGINAS GENERICAS
-Route::get('/{page?}','FrontendController@show');
+Route::get('/details','FrontendController@create');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//ROTA PARA PAGINAS GENERICAS (NA PAGINA TEMP)
+Route::get('/{page?}','FrontendController@show');

@@ -3,22 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
-use Session;
-use Illuminate\Support\Facades\Storage;
 use App\Place;
 
-class FrontendController extends Controller
+class PlacesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($lang = null)
+    public function index()
     {
-        return view('index');
+
     }
+
+    public function apiAllPlaces()
+    {
+        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
+        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+        $places = Place::all();
+        $json = array();
+
+        foreach ($places as $key => $place) {
+            array_push($json,[
+                "place" => $place,
+                "template" => view('components.card')->with('place',$place)->render(),
+            ]);
+        };
+
+        return response()->json($json,200);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -27,19 +42,7 @@ class FrontendController extends Controller
      */
     public function create()
     {
-        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1 
-        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS 
-        $places = Place::all();
-        $json = array();
-
-        foreach ($places as $key => $place) {
-            array_push($json,[
-                "place" => $place,
-                "template" => view('components.card')->with('place',$place)->render(),
-            ]);                
-        };
-
-        return response()->json($json,200);
+        //
     }
 
     /**
@@ -59,12 +62,9 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($page = null)
+    public function show($id)
     {
-        if(view()->exists('temp/'.$page))
-            return view('temp/'.$page);
-        else
-            return redirect('/');
+        //
     }
 
     /**
