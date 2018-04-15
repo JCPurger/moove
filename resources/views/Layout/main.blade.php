@@ -40,14 +40,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b
                                 class="fa fa-angle-down"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                        <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar perfil</a></li>
+                        <li><a href="{{ route('listFavorites',Auth::id()) }}"><i class="fa fa-fw fa-heart"></i> Favoritos</a></li>
+                        {{--<li><a href="{{ route('listComments') }}"><i class="fa fa-fw fa-cog"></i> Comentários</a></li>--}}
+                        {{--<li><a href="{{ route('changepassword') }}"><i class="fa fa-fw fa-cog"></i> Trocar senha</a></li>--}}
                         <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
-                                Logout
+                                <i class="fa fa-sign-out"></i>Logout
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -15,7 +15,7 @@
 
 					<div class="col-md-12 panelBottom">
 						<div class="col-md-4 text-center">
-							<button class="btn btn-primary  btn-lg btn-block">Ver Detalhes</button>
+							<a href="{{ route('detailsPlace',$place->id) }}" class="btn btn-primary  btn-lg btn-block">Ver Detalhes</a>
 						</div>
 					</div>
 				</div>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Place;
+use User;
 
-class PlacesController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,26 +14,8 @@ class PlacesController extends Controller
      */
     public function index()
     {
-
+        //
     }
-
-    public function apiAllPlaces()
-    {
-        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
-        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
-        $places = Place::all();
-        $json = array();
-
-        foreach ($places as $key => $place) {
-            array_push($json,[
-                "place" => $place,
-                "template" => view('components.card')->with('place',$place)->render(),
-            ]);
-        };
-
-        return response()->json($json,200);
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -64,7 +46,7 @@ class PlacesController extends Controller
      */
     public function show($id)
     {
-        return view('details-places');
+
     }
 
     /**
@@ -75,7 +57,7 @@ class PlacesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('showprofile');
     }
 
     /**

@@ -21,39 +21,6 @@ class FrontendController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1 
-        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS 
-        $places = Place::all();
-        $json = array();
-
-        foreach ($places as $key => $place) {
-            array_push($json,[
-                "place" => $place,
-                "template" => view('components.card')->with('place',$place)->render(),
-            ]);                
-        };
-
-        return response()->json($json,200);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -65,39 +32,5 @@ class FrontendController extends Controller
             return view('temp/'.$page);
         else
             return redirect('/');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
