@@ -13,7 +13,7 @@ class UsuarioTableSeeder extends Seeder
     {
         // cfactory(App\User::class, 50)->create();
 
-        DB::table('usuario')->insert([
+        DB::table('user')->insert([
         	'nome' => "usuario",
             'email' => 'usuario@moves.com',
             'password' => bcrypt('secret'),
@@ -24,7 +24,7 @@ class UsuarioTableSeeder extends Seeder
             'endereco' => 'RUA EXEMPLO USUARIO',
         ]);
 
-        DB::table('usuario')->insert([
+        DB::table('user')->insert([
             'nome' => "empresa",
             'email' => 'empresa@moves.com',
             'password' => bcrypt('secret'),

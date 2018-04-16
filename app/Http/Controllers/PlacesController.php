@@ -42,7 +42,7 @@ class PlacesController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-places');
     }
 
     /**
@@ -53,7 +53,8 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = Place::create($request->all());
+        dd($place);
     }
 
     /**

@@ -40,8 +40,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b
                                 class="fa fa-angle-down"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar perfil</a></li>
-                        <li><a href="{{ route('listFavorites',Auth::id()) }}"><i class="fa fa-fw fa-heart"></i> Favoritos</a></li>
+                        <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar
+                                perfil</a></li>
+                        <li><a href="{{ route('listFavorites',Auth::id()) }}"><i class="fa fa-fw fa-heart"></i>
+                                Favoritos</a></li>
                         {{--<li><a href="{{ route('listComments') }}"><i class="fa fa-fw fa-cog"></i> Comentários</a></li>--}}
                         {{--<li><a href="{{ route('changepassword') }}"><i class="fa fa-fw fa-cog"></i> Trocar senha</a></li>--}}
                         <li class="divider"></li>
@@ -110,7 +112,7 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row" id="main">
-                @yield('content');
+                @yield('content')
             </div>
             <!-- /.row -->
         </div>
@@ -118,15 +120,6 @@
     </div>
     <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
-
-{{-- MODAL LOGIN --}}
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-     style="display: none;">
-    <div class="modal-dialog">
-
-    </div>
-</div>
-{{-- MODAL LOGIN --}}
 
 <script src="{{asset('/js/app.js')}}"></script>
 <script src="{{asset('/js/parsley.min.js')}}"></script>

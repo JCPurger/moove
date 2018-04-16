@@ -26,7 +26,10 @@ Route::get('/lang/{lang?}',function ($lang = null){
 //API PLACES
 Route::post('/places','PlacesController@apiAllPlaces')->name('postAllPlaces');
 Route::get('/places','PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
+
 Route::get('/places/show/{id}','PlacesController@show')->name('detailsPlace');
+Route::get('/places/create','PlacesController@create')->name('createPlace');
+Route::post('/places/store','PlacesController@store')->name('storePlace');
 
 Route::get('/profile/edit/{id}','UserProfileController@edit')->name('editProfile');
 Route::post('/profile/update/{id}','UserProfileController@update')->name('updateProfile');
@@ -37,6 +40,7 @@ Route::get('/favorites/{id}','FavoriteController@index')->name('listFavorites');
 Route::group(['middleware' => 'user'],function(){
 	Route::get('/point/create');
 });
+
 //AREA DO USUARIO EMPRESA
 Route::group(['middleware' => 'company'],function(){
 	Route::get('/point/create');

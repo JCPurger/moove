@@ -21,6 +21,7 @@ class CreatePlaceTable extends Migration
             $table->string('categoria');//FAZER OUTRA RELACAO PARA CATEGORIAS
             $table->string('imagem')->nullable();
             $table->text('descricao');
+            $table->timestamps();
         });
     }
 
