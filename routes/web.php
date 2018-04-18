@@ -24,9 +24,11 @@ Route::get('/lang/{lang?}',function ($lang = null){
 });
 
 //API PLACES
-Route::post('/places','PlacesController@apiAllPlaces')->name('postAllPlaces');
-Route::get('/places','PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
+Route::post('/places/api/getAll','PlacesController@apiAllPlaces')->name('postAllPlaces');
+Route::get('/places/api/getAll','PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
 
+//Route::rousource('/places','PlacesController');
+Route::get('/places','PlacesController@index')->name('listPlaces');
 Route::get('/places/show/{id}','PlacesController@show')->name('detailsPlace');
 Route::get('/places/create','PlacesController@create')->name('createPlace');
 Route::post('/places/store','PlacesController@store')->name('storePlace');

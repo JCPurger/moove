@@ -34,8 +34,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function posts()
+    public function comments()
     {
         return $this->belongsToMany('App\Comment');
+    }
+
+    public function places()
+    {
+        return $this->hasMany('App\Place','id_user','id');
     }
 }

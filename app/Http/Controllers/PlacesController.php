@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Place;
 
@@ -14,26 +15,10 @@ class PlacesController extends Controller
      */
     public function index()
     {
-
+        $user = Auth::user();
+        $places = $user->places;
+        return view('list-places',['places' => $places]);
     }
-
-    public function apiAllPlaces()
-    {
-        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
-        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
-        $places = Place::all();
-        $json = array();
-
-        foreach ($places as $key => $place) {
-            array_push($json,[
-                "place" => $place,
-                "template" => view('components.card')->with('place',$place)->render(),
-            ]);
-        };
-
-        return response()->json($json,200);
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +50,10 @@ class PlacesController extends Controller
      */
     public function show($id)
     {
-        return view('details-places');
+        $place = Place::findOrFail($id);
+        $data = ['place' => $place];
+
+        return view('details-places',$data);
     }
 
     /**
@@ -99,6 +87,26 @@ class PlacesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Place::destroy($id);
+
+        //TODO: colocar msg de retorno
+        return back();
+    }
+
+    public function apiAllPlaces()
+    {
+        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
+        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+        $places = Place::all();
+        $json = array();
+
+        foreach ($places as $key => $place) {
+            array_push($json,[
+                "place" => $place,
+                "template" => view('components.card',['place' => $place])->render(),
+            ]);
+        };
+
+        return response()->json($json,200);
     }
 }
