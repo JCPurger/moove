@@ -3,6 +3,10 @@
 
 @section('content')
 
-    <h1>EXEMPLO CORPO DE DETALHES DO LUGAR</h1>
+    <img src="{{ @$place->imagem }}" alt="imagem do paranuê">
+    
+    <h1>{{ $place->nome }}</h1>
+
+    <div>{{ $place->descricao }}</div>
 
 @endsection

@@ -14,27 +14,33 @@ class LugarTableSeeder extends Seeder
         DB::table('lugar')->insert([
         	'latitude' => "-19.212355602107472",
             'longitude' => '-44.57636812499999',
-            'nome' => 'lugar_teste',
+            'nome' => 'restaurante 01',
             'categoria' => 'restaurante',
-            'descricao' => 'descricao de teste',
+            'descricao' => 'descricao de teste 01',
+            'imagem' => 'default.png',
+            'id_user' => 2,
         ]);
 
 
         DB::table('lugar')->insert([
         	'latitude' => "-22.618827234831404",
             'longitude' => '-42.57636812499999',
-            'nome' => 'lugar_teste',
+            'nome' => 'hospital 01',
             'categoria' => 'hospital',
-            'descricao' => 'descricao de teste',
+            'descricao' => 'descricao de teste 02',
+            'imagem' => 'default.png',
+            'id_user' => 2,
         ]);
 
 
         DB::table('lugar')->insert([
         	'latitude' => "-22.57825604463875",
             'longitude' => '-48.68476656249999',
-            'nome' => 'lugar_teste',
+            'nome' => 'restaurante 02',
             'categoria' => 'restaurante',
-            'descricao' => 'descricao de teste',
+            'descricao' => 'descricao de teste 03',
+            'imagem' => 'default.png',
+            'id_user' => 2,
         ]);
 
     }
