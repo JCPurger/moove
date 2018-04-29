@@ -22,6 +22,7 @@ return [
     'espanhol' => 'Espanhol',
     'frances' => 'Frances',
     'entrar' => 'Yo',
-    'buscar' => 'Búsqueda'
+    'buscar' => 'Búsqueda',
+    'ranque' => 'ranque'
 
 ];

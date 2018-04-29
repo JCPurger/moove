@@ -38,8 +38,9 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        $place = Place::create($request->all());
-        dd($place);
+        $user = Auth::user();
+        $user->places()->create($request->all());
+        dd($user);
     }
 
     /**
@@ -100,10 +101,14 @@ class PlacesController extends Controller
         $places = Place::all();
         $json = array();
 
+        $favorite = false;
         foreach ($places as $key => $place) {
+            if(Auth::check())
+                $favorite = Auth::user()->favorites->contains($place);
+
             array_push($json,[
                 "place" => $place,
-                "template" => view('components.card',['place' => $place])->render(),
+                "template" => view('components.card',['place' => $place,'favorite' => $favorite])->render(),
             ]);
         };
 

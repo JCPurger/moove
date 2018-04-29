@@ -3,11 +3,6 @@
 
 @section('content')
 
-    <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-
-
     <div class="container">
       <div class="section">
 <h1>Seus lugares favoritos estão aqui!</h1>
@@ -63,6 +58,5 @@
      </div>
 	</div>
  
-
 
 @endsection

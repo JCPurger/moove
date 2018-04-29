@@ -7,8 +7,9 @@
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css') }}">
 </head>
 <body>
 <div id="throbber" style="display:none; min-height:120px;"></div>
@@ -25,7 +26,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('img/mov(fundo transparente).png') }}" alt="LOGO"">
+                <img src="{{ asset('img/logo_p.png') }}" alt="LOGO">
             </a>
         </div>
         <!-- Top Menu Items -->
@@ -40,10 +41,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b
                                 class="fa fa-angle-down"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar
-                                perfil</a></li>
-                        <li><a href="{{ route('listFavorites',Auth::id()) }}"><i class="fa fa-fw fa-heart"></i>
-                                Favoritos</a></li>
+                        <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar perfil</a></li>
+                        <li><a href="{{ route('listPlaces') }}"><i class="fa fa-fw fa-map-marker"></i> Lugares</a></li>
+                        <li><a href="{{ route('listFavorites') }}"><i class="fa fa-fw fa-heart"></i>Favoritos</a></li>
                         {{--<li><a href="{{ route('listComments') }}"><i class="fa fa-fw fa-cog"></i> Comentários</a></li>--}}
                         {{--<li><a href="{{ route('changepassword') }}"><i class="fa fa-fw fa-cog"></i> Trocar senha</a></li>--}}
                         <li class="divider"></li>
@@ -66,7 +66,8 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav" id="menu">
                 <li><a href="/quem-somos">@lang('navigation.quem_somos')</a></li>
-                <li><a href="/duvidas">@lang('navigation.duvidas')</a></li>
+                {{--<li><a href="/duvidas">@lang('navigation.duvidas')</a></li>--}}
+                <li><a href="/ranque">@lang('navigation.ranque')</a></li>
                 <li><a href="/contato">@lang('navigation.contato')</a></li>
                 <!-- dropdown nao abre-->
                 <li class="dropdown">
@@ -121,9 +122,9 @@
     <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
 
-<script src="{{asset('/js/app.js')}}"></script>
-<script src="{{asset('/js/parsley.min.js')}}"></script>
-<script src="{{asset('/js/flow.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ asset('/js/parsley.min.js') }}"></script>
+<script src="{{ asset('/js/flow.js') }}"></script>
 
 @yield("scripts")
 
