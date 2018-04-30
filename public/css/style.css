@@ -1,4 +1,4 @@
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+/*@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');*/
 
 @media (min-width: 768px) {
     body {
@@ -95,7 +95,7 @@
         border-radius: 0;
         border-top: 1px rgba(0, 0, 0, .5) solid;
         overflow-y: auto;
-        background-color: #000c;
+        background-color: rgba(0,0,0,.8);
         /*background-color: #5A6B7D;*/
         bottom: 0;
         overflow-x: hidden;

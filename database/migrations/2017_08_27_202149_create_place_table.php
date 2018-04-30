@@ -21,9 +21,9 @@ class CreatePlaceTable extends Migration
             $table->string('categoria');//TODO: FAZER OUTRA RELACAO PARA CATEGORIAS
             $table->string('imagem')->nullable();
             $table->text('descricao');
-            $table->unsignedInteger('id_user');
+            $table->unsignedInteger('user_id');
 
-            $table->foreign('id_user')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }

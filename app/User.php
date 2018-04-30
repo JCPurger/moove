@@ -36,11 +36,16 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->belongsToMany('App\Comment');
+        return $this->belongsToMany('App\Comment','comentario');
     }
 
     public function places()
     {
-        return $this->hasMany('App\Place','id_user','id');
+        return $this->hasMany('App\Place');
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Place','favorito','user_id','lugar_id');
     }
 }

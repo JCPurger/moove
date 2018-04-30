@@ -3,6 +3,8 @@
 
 @section('content')
 
+    <a href="{{ route('createPlace') }}" class="btn btn-primary btn-block" role="button">Adicionar</a>
+
     <div class="list-group">
         @foreach($places as $place)
         <a href="#" class="list-group-item">

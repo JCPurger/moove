@@ -14,8 +14,40 @@ function initMap() {
         mapTypeControl: true
     });
 
-    map.addListener('bounds_changed', function (e) {
-        carregarPontos();
+    // Carrega todos os pontos toda vez que o mapa for mexido
+    // map.addListener('bounds_changed', function (e) {
+    //     carregarPontos();
+    // });
+    carregarPontos();
+
+
+    $('body').on('click', '#add-favorite', function () {
+        var $favoriteB = $(this);
+        var $id = $favoriteB.data('id');
+
+        $.ajax({
+            url: '/favorites/toggle',
+            type: 'POST',
+            dataType: 'json',
+            data: {id: $id},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+            .done(function (data) {
+                if (data.status)
+                    $favoriteB.css('color', '#FF0000');
+                else
+                    $favoriteB.css('color', '#7A7A7A');
+
+                alert(data.msg);
+            })
+            .fail(function () {
+                console.log("Error add favorites");
+            })
+            .always(function () {
+
+            });
     });
 
 }
@@ -23,7 +55,7 @@ function initMap() {
 function carregarPontos() {
     //setMapOnAll(null);
     $.ajax({
-        url: '/places',
+        url: '/places/api/getAll',
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -32,7 +64,7 @@ function carregarPontos() {
     })
         .done(function (pontos) {
             $.each(pontos, function (index, ponto) {
-                console.log(ponto.template);
+                console.log(pontos);
                 var icon = {
                     url: "img/icon.png", // url
                     scaledSize: new google.maps.Size(15, 15), // scaled size
@@ -49,7 +81,6 @@ function carregarPontos() {
                 var infowindow = new google.maps.InfoWindow(), marker;
 
                 google.maps.event.addListener(infowindow, 'domready', function () {
-
                     var iwOuter = $('.gm-style-iw');
                     var iwBackground = iwOuter.prev();
                     // Remover o div da sombra do fundo
@@ -77,7 +108,6 @@ function carregarPontos() {
                     });
                     iwOuter.children().children().css({'overflow': 'hidden'});
                     iwOuter.next().css({'right': '126px', 'top': '43px'});
-
                 });
 
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -97,6 +127,7 @@ function carregarPontos() {
         });
 
 }
+
 
 // Sets the map on all markers in the array.
 // function setMapOnAll(map) {
