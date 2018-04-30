@@ -8,107 +8,154 @@
     <!--Cadastro -->
     <div id="form-cadas" class="container-fluid"  style="text-align:center; margin: 0 auto;">
 
-        <h1 class="titulo">Venha se mover!</h1>
-        <h5>Preencha todos os campos</h5>
 
-        <p class="tipo-pessoa">
-            <input id="inptJuridica" type="radio" name="optradio" value="juridica">
-            <label for="inptJuridica"> Pessoa Juridica</label>
+<div class="container">
+    <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="usuario-form-link">Usuário</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="empresa-form-link">Empresa</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+    <div class="col-lg-12 well">
+  
+                <form id="usuario-form" action="#" method="post" role="form" style="display: block;">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Primeiro Nome</label>
+                                <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Último Nome</label>
+                                <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                            </div>
+                        </div>                    
+                        <div class="row">                     
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" placeholder="Enter Eamil Here.." class="form-control">
+                    </div>      
+                     <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Senha</label>
+                                <input type="text" placeholder="Enter Password Here.." class="form-control">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Confirmação de Senha</label>
+                                <input type="text" placeholder="Enter Password Here.." class="form-control">
+                            </div>
+                        </div> 
+                    <div class="form-group">
+                        <label>Foto de Perfil</label>
+                        <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                    </div>
+                    <button type="button" class="btn btn-lg btn-info">Submit</button>                   
+                    </div>
+                </form> 
+                
+    </div>
 
-            <input id="inptFisica" type="radio" name="optradio" value="fisica" checked="">
-            <label for="inptFisica">Pessoa Fisica</label>
-        </p>
+    <div class="col-lg-12 well">
+    <div class="row">
+                <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Nome</label>
+                                <input type="text" placeholder="Enter Name Here.." class="form-control">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>CNPJ</label>
+                                <input type="text" placeholder="Enter CNPJ Here.." class="form-control">
+                            </div>
+                        </div>                  
+                         <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" placeholder="Enter Endereco Here.." class="form-control">
+                    </div>  
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <label>Número</label>
+                                <input type="text" placeholder="Enter Number Here.." class="form-control">
+                            </div>  
+                            <div class="col-sm-4 form-group">
+                                <label>Complemento</label>
+                                <input type="text" placeholder="Enter Complement Here.." class="form-control">
+                            </div>  
+                            <div class="col-sm-4 form-group">
+                                <label>Fotos</label>
+                                <input type="text" placeholder="Enter Fotos.zip Here.." class="form-control">
+                            </div>      
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Title</label>
+                                <input type="text" placeholder="Enter Designation Here.." class="form-control">
+                            </div>      
+                            <div class="col-sm-6 form-group">
+                                <label>Company</label>
+                                <input type="text" placeholder="Enter Company Name Here.." class="form-control">
+                            </div>  
+                        </div>                      
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                    </div>      
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                    </div>  
+                       <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Senha</label>
+                                <input type="text" placeholder="Enter Password Here.." class="form-control">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Confirmação de Senha</label>
+                                <input type="text" placeholder="Enter Password Here.." class="form-control">
+                            </div>
+                        </div> 
+                    <div class="form-group">
+                        <label>Website</label>
+                        <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                    </div>
+                    <button type="button" class="btn btn-lg btn-info">Submit</button>                   
+                    </div>
+                </form> 
+                </div>
+    </div>
 
-        <!-- Pessoa Jurídica -->
-        <form class="form-horizontal" id="juridica" role="form" method="POST" action="{{ route('register') }}" style="display:none;">
-            {{ csrf_field()  }}
-            <input type="hidden" name="tipo" value="1" />
-
-            <label class="form">Nome Fantasia</label>
-            <input type="text" name="nome" required="" size="30">
-            </br>
-
-            <label class="form">CNPJ </label>
-            <input type="text" name="cnpj" required="" size="30">
-            </br>
-
-            <label class="form">Endereço </label>
-            <input type="text" name="endereço" required="" size="30">
-            </br>
-
-            <label class="form">Email </label>
-            <input type="email" name="email" required="" size="30">
-            </br>
-
-            <label class="form">Senha </label>
-            <input type="password" name="password" size="30">
-            </br>
-
-            <label class="form">Link </label>
-            <input type="text" name="link" size="30">
-            </br>
-
-            <label class="form">Categoria </label>
-            <select id="appearance-select">
-                <option selected="" disabled="">Caterogias</option>
-                <option>Categoria 1</option>
-                <option>Categoria 2</option>
-                <option>Categoria 3</option>
-            </select> </br></br>
-
-            <label class="form">Descrição </label>
-            <textarea id="msg"rows="3" cols="30" maxlength="50" name="descriçao" size="80"></textarea>
-            </br></br>
-
-            <label class="form">Foto de Capa </label>
-            <input type="file" name="imagem" size="30">
-            </br>
-
-            <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
-        </form>
-
-        <!-- Pessoa Física -->
-        <form  action="{{ route('register') }}" method="POST" id="fisica" style="display:fixed;" enctype="multipart/form-data">
-            {{ csrf_field()  }}
-            @include('components.alert.composite')
-            <input type="hidden" name="tipo" value="2">
-
-            <label class="form">Nome</label>
-            <input type="text" name="nome" size="30" value="{{ old('nome') }}">
-            </br>
-
-            <label class="form">CPF</label>
-            <input type="text" name="cpf" size="30" value="{{ old('cpf') }}">
-            </br>
-
-            <label class="form">Email </label>
-            <input type="email" name="email" size="30" value="{{ old('email') }}">
-            </br>
-
-            <label class="form">Senha </label>
-            <input type="password" name="password" size="30">
-            </br></br>
-
-            <label class="form">Foto do Perfil - File </label>
-            <input type="file" name="imagem">
-            </br>
-
-            <input class="btn-submit" type="submit" name="cadastrar" value="Cadastrar">
-        </form>
+    </div>
 
     </div>
 @endsection
 
 @section("scripts")
     <script>
-        $('body').on('click', '.tipo-pessoa input', function(event) {
-            if($(this).attr("id") == "inptFisica"){
-                $("#juridica").css("display","none");
-                $("#fisica").css("display","inline");
-            }else if($(this).attr("id") == "inptJuridica"){
-                $("#fisica").css("display","none");
-                $("#juridica").css("display","inline");
-            }
-        });
+$(function() {
+
+    $('#usuario-form-link').click(function(e) {
+        $("#usuario-form").delay(100).fadeIn(100);
+        $("#empresa-form").fadeOut(100);
+        $('#empresa-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+    $('#empresa-form-link').click(function(e) {
+        $("#empresa-form").delay(100).fadeIn(100);
+        $("#usuario-form").fadeOut(100);
+        $('#usuario-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
     </script>
 @endsection
+});
