@@ -3,8 +3,8 @@
 
 @section('content')
 
-    <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/app.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <div id="wrap">
   <div class="card">
@@ -12,15 +12,15 @@
     <h3>Nome da Empresa</h3>
     <hr/>
     <p class="desc">Chhajed Garden’s Sunrise 14.5 Cm Gardening Plant Container, White Nursery Ceramic Pot 6"</p>
-    <div class="add"><a href="#">Comentar</a></div>
+    <div class="add"><a href="#coment">Comentar</a></div>
   </div>
 </div>
 
 <!-- Comentários -->
-  <div class="container">
+<div class="container">
   <div class="row">
     <div class='col-md-offset-2 col-md-8 text-center'>
-    <h1>Veja o que as outras pessoas estão dizendo!</h1>
+      <h1>Veja o que as outras pessoas estão dizendo!</h1>
     </div>
   </div>
   <div class='row'>
@@ -33,10 +33,10 @@
           <li data-target="#quote-carousel" data-slide-to="2"></li>
         </ol>
         
-        <!-- Carousel Slides / Quotes -->
+        <!-- Carousel Slides / Comments -->
         <div class="carousel-inner">
-        
-          <!-- Quote 1 -->
+
+          <!-- Comment 1 -->
           <div class="item active">
             <blockquote>
               <div class="row">
@@ -50,7 +50,7 @@
               </div>
             </blockquote>
           </div>
-          <!-- Quote 2 -->
+          <!-- Comment 2 -->
           <div class="item">
             <blockquote>
               <div class="row">
@@ -64,7 +64,7 @@
               </div>
             </blockquote>
           </div>
-          <!-- Quote 3 -->
+          <!-- Comment 3 -->
           <div class="item">
             <blockquote>
               <div class="row">
@@ -72,7 +72,7 @@
                   <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
                 </div>
                 <div class="col-sm-9">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan.</p>
                   <small>Pessoa Três</small>
                 </div>
               </div>
@@ -89,12 +89,27 @@
 </div>
 
 
+<form class="form-horizontal" role="form">
+  <div class="form-group" id="coment">
+    <label class="col-sm-2 control-label"><img class="img-circle" src="/img/perfil.jpg" style="width: 50px;height:50px;"></label>
+    <div class="col-sm-10">
+      <div id="summernote" placeholder="Seu comentário..."></div>
+    </div>
+  </div>
 
+  <hr class="line-dashed line-full"/>
 
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+      <button type="reset" class="btn btn-lightred">Cancelar</button>
+      <button type="submit" class="btn btn-default">Salvar Comentário</button>
+    </div>
+  </div>
+</form>
 
 <script type="text/javascript">
 	// When the DOM is ready, run this function
-$(document).ready(function() {
+  $(document).ready(function() {
   //Set the carousel options
   $('#quote-carousel').carousel({
     pause: true,
@@ -102,6 +117,7 @@ $(document).ready(function() {
   });
 });
 </script>
+
 
 
 @endsection

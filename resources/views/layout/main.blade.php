@@ -7,9 +7,10 @@
 
     <title>@yield('title')</title>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/summernote.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css') }}">
 </head>
 <body>
 <div id="throbber" style="display:none; min-height:120px;"></div>
@@ -125,6 +126,16 @@
 <script src="{{ asset('/js/app.js') }}"></script>
 <script src="{{ asset('/js/parsley.min.js') }}"></script>
 <script src="{{ asset('/js/flow.js') }}"></script>
+<script src="{{ asset('/js/summernote.min.js') }}"></script>
+
+<script>
+    $('#summernote').summernote({
+        width: 700,
+        height:100, //set editable area's height
+        toolbar:[//[groupName,[list of button]]]
+        ['style',['bold','italic','underline']]]
+    });
+</script>
 
 @yield("scripts")
 
