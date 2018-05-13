@@ -130,7 +130,7 @@
 
 <script>
     $('#summernote').summernote({
-        width: 700,
+        width: 650,
         height:100, //set editable area's height
         toolbar:[//[groupName,[list of button]]]
         ['style',['bold','italic','underline']]]

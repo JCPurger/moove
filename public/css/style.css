@@ -477,6 +477,10 @@ h5 {
 #wrap .card .add:hover {
   background: #cc7f00;
 }
+.form-horizontal {
+    margin-left: 15%; 
+}
+
 
 /*Cometarios */
 
@@ -618,5 +622,22 @@ h5 {
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;
->>>>>>> frontend
+}
+
+/* Lugares Cadastrados */
+#wrap_lugar {
+  width: 100%;
+  height: auto;
+  margin-left: 10%;
+  margin-top: 0 auto;
+}
+#wrap_lugar .card {
+  width: 90%;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  float: left;
+  position: relative;
+  border-radius: 5px;
+  padding: 0 10px;
 }
