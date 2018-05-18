@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Favorite;
 use App\User;
+use DB;
 
 class FavoriteController extends Controller
 {
@@ -17,8 +18,7 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $favorites = $user->favorites;
+        $favorites = Auth::user()->favorites()->paginate(6);
         return view('favorites',['favorites' => $favorites]);
     }
 
@@ -29,7 +29,7 @@ class FavoriteController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -88,7 +88,13 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $favorites = Auth::user()->favorites()->detach($id);
+
+        if($favorites){
+            return response()->json('Apagado com sucesso !',200);
+        }else{
+            return response()->json('Houve algum erro e não pode ser apagado !',200);
+        }
     }
 
     public function toggleFavorite(Request $request)

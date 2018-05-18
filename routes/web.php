@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Use Illuminate\Http\Request;
 
-//ROTA DE AUTENTICACAO
 Auth::routes();
 
 Route::get('/','FrontendController@index');
@@ -34,12 +32,8 @@ Route::post('/profile/update/{id}','UserProfileController@update')->name('update
 
 Route::get('/favorites/toggle/{id}','FavoriteController@toggleFavorite');
 Route::post('/favorites/toggle','FavoriteController@toggleFavorite');
-Route::resource('/favorites','FavoriteController',['names' => [
-    'index' => 'listFavorites',
-    'create' => 'createFavorite',
-    'store' => 'storeFavorite',
-    'destroy' => 'destroyFavorite'
-]]);
+Route::get('/favorites/delete/{id}','FavoriteController@destroy');
+Route::resource('/favorites','FavoriteController');
 
 //AREA DO USUARIO NORMAL
 Route::group(['middleware' => ['user','auth']],function() {
@@ -48,12 +42,7 @@ Route::group(['middleware' => ['user','auth']],function() {
 
 //AREA DO USUARIO EMPRESA
 Route::group(['middleware' => ['company','auth']],function() {
-    Route::resource('/places','PlacesController',['names' => [
-        'index' => 'listPlaces',
-        'create' => 'createPlace',
-        'store' => 'storePlace',
-        'destroy' => 'destroyPlace'
-    ]]);
+    Route::resource('/places','PlacesController');
 });
 
 //ROTA PARA PAGINAS GENERICAS (NA PAGINA TEMP)

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    protected $table = 'lugar';
+    protected $table = 'place';
 
     /**
      * The attributes that are mass assignable.
