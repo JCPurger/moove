@@ -11,24 +11,24 @@ class FavorioTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('favorito')->insert([
+        DB::table('favorite')->insert([
             'user_id' => 1,
-            'lugar_id' => 1,
+            'place_id' => 1,
         ]);
 
-        DB::table('favorito')->insert([
+        DB::table('favorite')->insert([
             'user_id' => 1,
-            'lugar_id' => 2,
+            'place_id' => 2,
         ]);
 
-        DB::table('favorito')->insert([
+        DB::table('favorite')->insert([
             'user_id' => 2,
-            'lugar_id' => 2,
+            'place_id' => 2,
         ]);
 
-        DB::table('favorito')->insert([
+        DB::table('favorite')->insert([
             'user_id' => 2,
-            'lugar_id' => 3,
+            'place_id' => 3,
         ]);
     }
 }

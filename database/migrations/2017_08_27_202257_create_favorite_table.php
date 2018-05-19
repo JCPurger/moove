@@ -13,13 +13,13 @@ class CreateFavoriteTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorito', function (Blueprint $table) {
+        Schema::create('favorite', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('lugar_id');
+            $table->unsignedInteger('place_id');
 
             $table->foreign('user_id')->references('id')->on('user');
-            $table->foreign('lugar_id')->references('id')->on('lugar');
+            $table->foreign('place_id')->references('id')->on('place');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateFavoriteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorito');
+        Schema::dropIfExists('favorite');
     }
 }
