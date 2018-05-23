@@ -2,7 +2,7 @@
 @section('title','Detalhes do lugar')
 
 @section('content')
-    <form action="{{ route('storePlace') }}" method="POST">
+    <form action="{{ route('places.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="nome">Nome</label>

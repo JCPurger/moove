@@ -12,38 +12,30 @@
 */
 
 Auth::routes();
-
-Route::get('/','FrontendController@index');
-
-//ROTA DE TROCA DE LINGUA
-Route::get('/lang/{lang?}',function ($lang = null){
-    Session::put('lang',$lang);
-    return back();
-});
-
-//API PLACES
-Route::post('/places/api/getAll','PlacesController@apiAllPlaces')->name('postAllPlaces');
-Route::get('/places/api/getAll','PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
-Route::get('/places/{id}','PlacesController@show')->name('detailsPlace');
-
-Route::get('/profile/edit/{id}','UserProfileController@edit')->name('editProfile');
-Route::post('/profile/update/{id}','UserProfileController@update')->name('updateProfile');
-
-
-Route::get('/favorites/toggle/{id}','FavoriteController@toggleFavorite');
-Route::post('/favorites/toggle','FavoriteController@toggleFavorite');
-Route::get('/favorites/delete/{id}','FavoriteController@destroy');
-Route::resource('/favorites','FavoriteController');
+Route::get('/', 'FrontendController@index');
+Route::get('/lang/{lang?}','FrontendController@changeLang');
 
 //AREA DO USUARIO NORMAL
-Route::group(['middleware' => ['user','auth']],function() {
-	Route::get('/point/create');
+Route::group(['middleware' => ['user', 'auth']], function () {
+    //USER - FAVORITES
+    Route::get('/favorites/toggle/{id}', 'FavoriteController@toggleFavorite');
+    Route::post('/favorites/toggle', 'FavoriteController@toggleFavorite');
+    Route::resource('/favorites', 'FavoriteController');
 });
 
 //AREA DO USUARIO EMPRESA
-Route::group(['middleware' => ['company','auth']],function() {
-    Route::resource('/places','PlacesController');
+Route::group(['middleware' => ['company', 'auth']], function () {
+    Route::resource('/places', 'PlacesController', ['except' => 'show']);
 });
 
+//PROFILE
+Route::get('/profile/edit', 'UserProfileController@edit')->name('editProfile');
+Route::post('/profile/update', 'UserProfileController@update')->name('updateProfile');
+
+//API E PUBLIC PLACES
+Route::post('/places/api/getAll', 'PlacesController@apiAllPlaces')->name('postAllPlaces');
+Route::get('/places/api/getAll', 'PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
+Route::get('/places/{id}', 'PlacesController@show')->name('detailsPlace');
+
 //ROTA PARA PAGINAS GENERICAS (NA PAGINA TEMP)
-Route::get('/{page?}','FrontendController@show');
+Route::get('/{page?}', 'FrontendController@show');
