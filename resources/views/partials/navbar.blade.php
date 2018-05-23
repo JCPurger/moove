@@ -23,13 +23,13 @@
             @else
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nome }} <b class="fa fa-angle-down"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('editProfile',Auth::id()) }}"><i class="fa fa-fw fa-user"></i> Editar perfil</a></li>
+                    <li><a href="{{ route('editProfile') }}"><i class="fa fa-fw fa-user"></i> Editar perfil</a></li>
                     @if(Auth::user()->isCompany())
                         <li><a href="{{ route('places.index') }}"><i class="fa fa-fw fa-map-marker"></i> Lugares</a></li>
                     @endif
-                    <li><a href="{{ route('favorites.index') }}"><i class="fa fa-fw fa-heart"></i>Favoritos</a></li>
-                    {{--<li><a href="{{ route('listComments') }}"><i class="fa fa-fw fa-cog"></i> Comentários</a></li>--}}
-                    {{--<li><a href="{{ route('changepassword') }}"><i class="fa fa-fw fa-cog"></i> Trocar senha</a></li>--}}
+                    @if(!Auth::user()->isCompany())
+                        <li><a href="{{ route('favorites.index') }}"><i class="fa fa-fw fa-heart"></i> Favoritos</a></li>
+                    @endif
                     <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}"

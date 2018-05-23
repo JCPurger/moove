@@ -15,9 +15,8 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $places = $user->places;
-        return view('list-places',['places' => $places]);
+        $places = Auth::user()->places()->get();
+        return view('places.list',['places' => $places]);
     }
 
     /**
@@ -27,7 +26,7 @@ class PlacesController extends Controller
      */
     public function create()
     {
-        return view('create-places');
+        return view('places.create');
     }
 
     /**
@@ -38,9 +37,7 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $user->places()->create($request->all());
-        dd($user);
+//        Auth::user()->places()->create($request->all());
     }
 
     /**
@@ -54,7 +51,7 @@ class PlacesController extends Controller
         $place = Place::findOrFail($id);
         $data = ['place' => $place];
 
-        return view('details-places',$data);
+        return view('places.details',$data);
     }
 
     /**
@@ -88,8 +85,7 @@ class PlacesController extends Controller
      */
     public function destroy($id)
     {
-        Place::destroy($id);
-
+        $place = Place::destroy($id);
         //TODO: colocar msg de retorno
         return back();
     }
