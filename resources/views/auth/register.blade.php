@@ -57,7 +57,7 @@
                                         <label>Foto de Perfil</label>
                                         <input type="file" id="perfil" class="form-control">
                                     </div>
-                                    <button type="button" class="btn btn-lg btn-info">Cadastrar</button>
+                                    <button type="button" class="btn btn-lg btn-primary">Cadastrar</button>
                                 </div>
                             </div>
                         </form>
@@ -119,7 +119,7 @@
                                             <label>Website</label>
                                             <input type="text" id="site" placeholder="Enter Website Name Here.." class="form-control">
                                         </div>
-                                        <button type="button" class="btn btn-lg btn-info">Cadastrar</button>
+                                        <button type="button" class="btn btn-lg btn-primary">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
