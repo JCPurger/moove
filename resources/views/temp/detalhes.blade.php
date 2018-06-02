@@ -8,7 +8,7 @@
 
 <div id="wrap">
   <div class="card">
-  	<img src="/img/perfil.jpg" style="width: 200px">
+  	<img src="/img/perfil.jpg" style="width: 200px; height: 220px;">
     <h3>Nome da Empresa</h3>
     <hr/>
     <p class="desc">Chhajed Garden’s Sunrise 14.5 Cm Gardening Plant Container, White Nursery Ceramic Pot 6"</p>

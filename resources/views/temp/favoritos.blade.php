@@ -22,7 +22,7 @@
                             <div class="lib-row lib-desc">
                                    <p class="card-text">A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio, sua história, etc.</p>
                                     <a href="#" class="btn btn-primary btn-sm">Ver mais</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Excluir</i></a>
+                                    <a href="#" class="btn btn-danger l btn-sm">Excluir</i></a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             <div class="lib-row lib-desc">
                                    <p class="card-text">A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio, sua história, etc.</p>
                                     <a href="#" class="btn btn-primary btn-sm">Ver mais</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Excluir</i></a>
+                                    <a href="#" class="btn btn-danger l btn-sm">Excluir</i></a>
                             </div>
                         </div>
                     </div>
