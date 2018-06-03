@@ -61,6 +61,7 @@
         <li><a href="/movase">Mova-se</a></li>
         <li><a href="/ranking">Ranking</a></li>
         <li><a href="/contato">Contato</a></li>
+        <li><a href="/atualizacoes">Novidades</a></li>
 
         <!--BUSCAR-->
         <form class="navbar-form navbar-left">
