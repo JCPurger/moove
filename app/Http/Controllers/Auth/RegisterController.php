@@ -52,8 +52,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nome' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:usuario',
-            'password' => 'required|string|min:6',
+            'email' => 'required|string|email|max:255|unique:user',
+            'password' => 'required|string|confirmed|min:6',
         ]);
     }
 
@@ -89,7 +89,12 @@ class RegisterController extends Controller
             'tipo' => $request->tipo,
             'cpf' => $request->cpf,
             'password' => $request->password,
-            'imagem_perfil' => Upload::uploadFile($request->file('imagem'))
+//            'imagem_perfil' => Upload::uploadFile($request->file('imagem'))
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        return redirect($this->redirectTo)->with('registered','teste da parada');
     }
 }
