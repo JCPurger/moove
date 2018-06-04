@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App;
 use Session;
-use Illuminate\Support\Facades\Storage;
 use App\Place;
+use App\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -15,9 +16,10 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($lang = null)
+    public function index()
     {
-        return view('index');
+        $categories = Category::all();
+        return view('index',['categories' => $categories]);
     }
 
     /**
@@ -32,5 +34,11 @@ class FrontendController extends Controller
             return view('temp/'.$page);
         else
             return redirect('/');
+    }
+
+    public function changeLang($lang = null)
+    {
+        Session::put('lang', $lang);
+        return back();
     }
 }

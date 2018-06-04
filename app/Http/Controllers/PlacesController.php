@@ -90,11 +90,15 @@ class PlacesController extends Controller
         return back();
     }
 
-    public function apiAllPlaces()
+    public function apiBuscaLugares(Request $request)
     {
         // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
         // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+        //TODO: terminar o filtro com post
         $places = Place::all();
+        $places_cat = Place::all()->where('category_id', $request->filter);
+        $places = $places_cat->count() == 0 ? Place::all() : $places_cat;
+
         $json = array();
 
         $favorite = false;

@@ -17,5 +17,8 @@ class Place extends Model
         'nome','latitude', 'longitude','categoria','imagem','descricao'
     ];
 
-
+    public function category()
+    {
+        return $this->belongsToMany('App\Category');
+    }
 }

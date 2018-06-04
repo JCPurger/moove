@@ -18,12 +18,13 @@ class CreatePlaceTable extends Migration
             $table->float('latitude',18,15);
             $table->float('longitude',18,15);
             $table->string('nome');
-            $table->string('categoria');//TODO: FAZER OUTRA RELACAO PARA CATEGORIAS
             $table->string('imagem')->nullable();
             $table->text('descricao');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id');
 
             $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
         });
     }
