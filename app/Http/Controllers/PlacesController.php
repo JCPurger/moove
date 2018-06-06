@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Place;
+use Illuminate\Support\Facades\Storage;
 
 class PlacesController extends Controller
 {
@@ -16,7 +17,7 @@ class PlacesController extends Controller
     public function index()
     {
         $places = Auth::user()->places()->get();
-        return view('places.list',['places' => $places]);
+        return view('places.list', ['places' => $places]);
     }
 
     /**
@@ -32,32 +33,34 @@ class PlacesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-//        Auth::user()->places()->create($request->all());
+        Auth::user()->places()->create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $place = Place::findOrFail($id);
-        $data = ['place' => $place];
+        $data = [
+            'place' => Place::findOrFail($id),
+            'user' => Auth::user(),
+        ];
 
-        return view('places.details',$data);
+        return view('places.details', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -68,8 +71,8 @@ class PlacesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -80,7 +83,7 @@ class PlacesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -103,15 +106,15 @@ class PlacesController extends Controller
 
         $favorite = false;
         foreach ($places as $key => $place) {
-            if(Auth::check())
+            if (Auth::check())
                 $favorite = Auth::user()->favorites->contains($place);
 
-            array_push($json,[
+            array_push($json, [
                 "place" => $place,
-                "template" => view('components.card',['place' => $place,'favorite' => $favorite])->render(),
+                "template" => view('components.card', ['place' => $place, 'favorite' => $favorite])->render(),
             ]);
         };
 
-        return response()->json($json,200);
+        return response()->json($json, 200);
     }
 }
