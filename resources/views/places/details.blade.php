@@ -83,25 +83,27 @@
             </div>
         </div>
     </div>
-    <form class="form-horizontal" role="form">
-        <div class="form-group" id="coment">
-            <label class="col-sm-2 control-label">
-                <img class="img-circle" src="{{ Storage::url($user->imagem_perfil) }}" style="width: 50px;height:50px;">
-            </label>
-            <div class="col-sm-10">
-                <div id="summernote" placeholder="Seu comentário..."></div>
+    @if(Auth::check())
+        <form class="form-horizontal" role="form">
+            <div class="form-group" id="coment">
+                <label class="col-sm-2 control-label">
+                    <img class="img-circle" src="{{ Storage::url($user->imagem_perfil) }}" style="width: 50px;height:50px;">
+                </label>
+                <div class="col-sm-10">
+                    <div id="summernote" placeholder="Seu comentário..."></div>
+                </div>
             </div>
-        </div>
 
-        <hr class="line-dashed line-full"/>
+            <hr class="line-dashed line-full"/>
 
-        <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-2">
-                <button type="reset" class="btn btn-lightred">Cancelar</button>
-                <button type="submit" class="btn btn-default">Salvar Comentário</button>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button type="reset" class="btn btn-lightred">Cancelar</button>
+                    <button type="submit" class="btn btn-default">Salvar Comentário</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    @endif
 @endsection
 
 @section('scripts')
