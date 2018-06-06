@@ -33,8 +33,8 @@ Route::get('/profile/edit', 'UserProfileController@edit')->name('editProfile');
 Route::post('/profile/update', 'UserProfileController@update')->name('updateProfile');
 
 //API E PUBLIC PLACES
-Route::post('/places/api/getAll', 'PlacesController@apiAllPlaces')->name('postAllPlaces');
-Route::get('/places/api/getAll', 'PlacesController@apiAllPlaces');//TODO: remover esse despois dos testes
+Route::post('/places/api/getAll', 'PlacesController@apiBuscaLugares')->name('postAllPlaces');
+Route::get('/api/test', 'PlacesController@apiBuscaLugares');//TODO: remover esse despois dos testes
 Route::get('/places/{id}', 'PlacesController@show')->name('detailsPlace');
 
 //ROTA PARA PAGINAS GENERICAS (NA PAGINA TEMP)

@@ -23,7 +23,7 @@
 
                         <div class="col-lg-12 well" id="usuario-form">
                             <!-- Cadastro Usuario -->
-                            <form action="{{ route('register') }}" method="post" role="form">
+                            <form action="{{ route('register') }}" enctype="multipart/form-data" method="POST" role="form">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="tipo" value="1"> {{--campo oculto para enviar tipo ao request--}}
                                 <div class="col-sm-12">
@@ -65,7 +65,7 @@
                         <!-- Cadastro Empresa -->
                         <div class="col-lg-12 well" id="empresa-form" style="display: none;">
                             <div class="row">
-                                <form action="{{ route('register') }}" method="post" role="form" style="display: block;">
+                                <form action="{{ route('register') }}" enctype="multipart/form-data" method="POST" role="form" style="display: block;">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="tipo" value="2"> {{--campo oculto para enviar tipo ao request--}}
                                     <div class="col-sm-12">

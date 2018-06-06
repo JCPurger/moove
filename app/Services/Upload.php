@@ -1,6 +1,6 @@
 <?php
 
-namespace App\services;
+namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\UploadedFile;
@@ -13,9 +13,10 @@ class Upload extends Controller
      * @param UploadedFile $file
      * @return false|string
      */
-    public static function uploadFile(UploadedFile $file){
+    public static function uploadFile(UploadedFile $file)
+    {
         if ($file->isValid()) {
-            return $file->store('uploads', 'public');
+            return $file->store('avatars', 'public');
         }
     }
 }

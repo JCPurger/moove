@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use App\services\Upload;
+use App\Services\Upload;
 
 class RegisterController extends Controller
 {
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'tipo' => $request->tipo,
             'cpf' => $request->cpf,
             'password' => $request->password,
-//            'imagem_perfil' => Upload::uploadFile($request->file('imagem'))
+            'imagem_perfil' => Upload::uploadFile($request->file('imagem_perfil'))
         ]);
     }
 
