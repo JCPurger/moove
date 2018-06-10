@@ -17,6 +17,6 @@ class Category extends Model
 
     public function places()
     {
-        return $this->hasMany('App\Place');
+        return $this->hasMany('App\Place','category_id','id');
     }
 }

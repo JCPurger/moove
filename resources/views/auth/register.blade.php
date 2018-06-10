@@ -1,6 +1,5 @@
 @extends('layout.main')
 
-
 @section("content")
     <!-- Login -->
     <!--Cadastro -->
@@ -25,7 +24,7 @@
                             <!-- Cadastro Usuario -->
                             <form action="{{ route('register') }}" enctype="multipart/form-data" method="POST" role="form">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="tipo" value="1"> {{--campo oculto para enviar tipo ao request--}}
+                                <input type="hidden" name="tipo" value="0"> {{--campo oculto para enviar tipo ao request--}}
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
@@ -49,7 +48,8 @@
                                             </div>
                                             <div class="col-sm-6 form-group">
                                                 <label>Confirmação de Senha</label>
-                                                <input type="password" id="confirmsenha" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Enter Password Here.." class="form-control">
+                                                <input type="password" id="confirmsenha" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Enter Password Here.."
+                                                       class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -67,7 +67,7 @@
                             <div class="row">
                                 <form action="{{ route('register') }}" enctype="multipart/form-data" method="POST" role="form" style="display: block;">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="tipo" value="2"> {{--campo oculto para enviar tipo ao request--}}
+                                    <input type="hidden" name="tipo" value="1"> {{--campo oculto para enviar tipo ao request--}}
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-6 form-group">
@@ -83,45 +83,44 @@
                                             <label>Endereço</label>
                                             <input type="text " id="endereco" name="endereco" value="{{ old('endereco') }}" placeholder="Enter Endereco Here.." class="form-control">
                                         </div>
+                                        {{--<div class="col-sm-6 form-group">--}}
+                                        {{--<label>Número</label>--}}
+                                        {{--<input type="text" id="numero" placeholder="Enter Number Here.." class="form-control">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-sm-6 form-group">--}}
+                                        {{--<label>Complemento</label>--}}
+                                        {{--<input type="text" id="complemento" placeholder="Enter Complement Here.." class="form-control">--}}
+                                        {{--</div>--}}
                                         <div class="row">
                                             <div class="col-sm-6 form-group">
-                                                <label>Número</label>
-                                                <input type="text" id="numero" placeholder="Enter Number Here.." class="form-control">
+                                                <label>Telefone</label>
+                                                <input type="text" id="tel" placeholder="Enter Telefone .." class="form-control">
                                             </div>
                                             <div class="col-sm-6 form-group">
-                                                <label>Complemento</label>
-                                                <input type="text" id="complemento" placeholder="Enter Complement Here.." class="form-control">
+                                                <label>Email</label>
+                                                <input type="text" id="emailEmp" name="email" value="{{ old('email') }}" placeholder="Enter Company Name Here.." class="form-control">
                                             </div>
-                                            <div class="col-sm-12 form-group">
-                                                <label>Fotos</label>
-                                                <input type="file" id="fotos" name="imagem_perfil" value="{{ old('imagem_perfil') }}" class="form-control">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Telefone</label>
-                                                    <input type="text" id="tel" placeholder="Enter Telefone .." class="form-control">
-                                                </div>
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" id="emailEmp" name="email" value="{{ old('email') }}" placeholder="Enter Company Name Here.." class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Senha</label>
-                                                    <input type="password" id="senhaEmp" placeholder="Enter Password Here.." class="form-control">
-                                                </div>
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Confirmação de Senha</label>
-                                                    <input type="password" id="confirmsenhaEmp" placeholder="Enter Password Here.." class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Website</label>
-                                                <input type="text" id="site" placeholder="Enter Website Name Here.." class="form-control">
-                                            </div>
-                                            <button type="button" class="btn btn-lg btn-primary">Cadastrar</button>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 form-group">
+                                                <label>Senha</label>
+                                                <input type="password" id="senha" name="password" value="{{ old('password') }}" placeholder="Enter Password Here.." class="form-control">
+                                            </div>
+                                            <div class="col-sm-6 form-group">
+                                                <label>Confirmação de Senha</label>
+                                                <input type="password" id="confirmsenha" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Enter Password Here.."
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <input type="text" id="site" placeholder="Enter Website Name Here.." class="form-control">
+                                        </div>
+                                        <div class="col-sm-12 form-group">
+                                            <label>Fotos</label>
+                                            <input type="file" id="fotos" name="imagem_perfil" value="{{ old('imagem_perfil') }}" class="form-control">
+                                        </div>
+                                        <button type="submit" class="btn btn-lg btn-primary">Cadastrar</button>
                                     </div>
                                 </form>
                             </div>

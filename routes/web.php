@@ -17,7 +17,7 @@ Route::get('/lang/{lang?}','FrontendController@changeLang');
 
 //AREA DO USUARIO NORMAL
 Route::group(['middleware' => ['user', 'auth']], function () {
-    //USER - FAVORITES
+    //FAVORITOS
     Route::get('/favorites/toggle/{id}', 'FavoriteController@toggleFavorite');
     Route::post('/favorites/toggle', 'FavoriteController@toggleFavorite');
     Route::resource('/favorites', 'FavoriteController');
@@ -25,6 +25,7 @@ Route::group(['middleware' => ['user', 'auth']], function () {
 
 //AREA DO USUARIO EMPRESA
 Route::group(['middleware' => ['company', 'auth']], function () {
+    //LUGARES
     Route::resource('/places', 'PlacesController', ['except' => 'show']);
 });
 
@@ -32,7 +33,7 @@ Route::group(['middleware' => ['company', 'auth']], function () {
 Route::get('/profile/edit', 'UserProfileController@edit')->name('editProfile');
 Route::post('/profile/update', 'UserProfileController@update')->name('updateProfile');
 
-//API E PUBLIC PLACES
+//API E LUGARES PULICOS
 Route::post('/places/api/getAll', 'PlacesController@apiBuscaLugares')->name('postAllPlaces');
 Route::get('/api/test', 'PlacesController@apiBuscaLugares');//TODO: remover esse despois dos testes
 Route::get('/places/{id}', 'PlacesController@show')->name('detailsPlace');

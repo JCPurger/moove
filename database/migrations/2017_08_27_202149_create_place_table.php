@@ -36,6 +36,10 @@ class CreatePlaceTable extends Migration
      */
     public function down()
     {
+        Schema::table('place', function (Blueprint $table) {
+            $table->dropForeign('user_id');
+            $table->dropForeign('category_id');
+        });
         Schema::dropIfExists('place');
     }
 }

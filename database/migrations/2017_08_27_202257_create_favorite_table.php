@@ -18,8 +18,8 @@ class CreateFavoriteTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('place_id');
 
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->foreign('place_id')->references('id')->on('place');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('place_id')->references('id')->on('place')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,10 @@ class CreateFavoriteTable extends Migration
      */
     public function down()
     {
+        Schema::table('favorite', function (Blueprint $table) {
+            $table->dropForeign('user_id');
+            $table->dropForeign('place_id');
+        });
         Schema::dropIfExists('favorite');
     }
 }

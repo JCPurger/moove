@@ -86,9 +86,12 @@ class RegisterController extends Controller
         return User::create([
             'nome' => $request->nome,
             'email' => $request->email,
+            'password' => $request->password,
             'tipo' => $request->tipo,
             'cpf' => $request->cpf,
-            'password' => $request->password,
+            'cnpj' => $request->cnpj,
+            'endereco' => $request->endereco,
+            'data_nascimento' => $request->data_nascimento,
             'imagem_perfil' => Upload::uploadFile($request->file('imagem_perfil'))
         ]);
     }

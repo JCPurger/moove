@@ -14,11 +14,11 @@ class Place extends Model
      * @var array
      */
     protected $fillable = [
-        'nome','latitude', 'longitude','categoria','imagem','descricao'
+        'nome','descricao','category_id','latitude','longitude','imagem'
     ];
 
     public function category()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsTo('App\Category');
     }
 }
