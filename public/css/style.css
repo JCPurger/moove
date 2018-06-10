@@ -420,6 +420,28 @@ h5 {
 }
 
 /* detalhes */
+.col-md-12{
+    padding-left: 25%;
+}
+.card-text-desc{
+  margin-left: 28%;
+  text-align: center;
+}
+
+.col-md-10 .desc{
+    background-color: #FFFFFF;
+    font-size: 20px;
+    margin-left: 35%;
+}
+
+.lib-panel .lib-row.lib-header .lib-header-seperator-desc{
+    height: 2px;
+    width: 50px;
+    background-color: #d9d9d9;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 
 #wrap {
   width: 100%;
@@ -456,7 +478,6 @@ h5 {
   margin-left: 0;
 }
 #wrap .card .desc {
-  margin: 15px 0;
   font-size: 16px;
   line-height: 20px;
   opacity: 0.8;

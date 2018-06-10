@@ -7,13 +7,25 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <div id="wrap">
-  <div class="card">
-  	<img src="/img/perfil.jpg" style="width: 200px; height: 220px;">
-    <h3>Nome da Empresa</h3>
-    <hr/>
-    <p class="desc">Chhajed Garden’s Sunrise 14.5 Cm Gardening Plant Container, White Nursery Ceramic Pot 6"</p>
-    <div class="add"><a href="#coment">Comentar</a></div>
-  </div>
+ <div class="col-md-4 no-padding lib-item" data-category="view">
+  <div class="lib-panel">
+    <div class="row box-shadow">
+      <div class="col-md-12">
+        <img class="lib-img-show" src="/img/perfil.jpg" style="width: 230px">
+      </div>
+      <div class="col-md-10">
+        <div class="lib-row lib-header desc">
+          Nome Empresa
+          <div class="lib-header-seperator-desc"></div>
+        </div>
+        <div class="lib-row lib-desc">
+         <p class="card-text-desc">A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio, sua história, etc.</p>
+       </div>
+
+     </div>
+   </div>
+ </div>
+</div>
 </div>
 
 <!-- Comentários -->

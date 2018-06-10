@@ -10,7 +10,7 @@
                         <h2>{{ $place->nome }}</h2>
                         <div class="lib-header-seperator"></div>
                     </div>
-                    <div class="lib-row lib-desc">
+                    <div class="lib-row">
                      <p class="card-text"><!--{{ $place->descricao }}-->A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio, sua história, etc.</p>
 
                      <a href="{{ route('detailsPlace',$place->id) }}" class="btn btn-primary btn-sm" title="Ver Detalhes"><i class="fa fa-plus"></i></a>  
