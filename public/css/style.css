@@ -416,7 +416,29 @@ h5 {
 }
 
 /* detalhes */
+.col-md-12{
+    padding-left: 25%;
+}
 .card-text-desc{
+    margin-left: 28%;
+    text-align: center;
+}
+
+.col-md-10 .desc{
+    background-color: #FFFFFF;
+    font-size: 20px;
+    margin-left: 35%;
+}
+
+.lib-panel .lib-row.lib-header .lib-header-seperator-desc{
+    height: 2px;
+    width: 50px;
+    background-color: #d9d9d9;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 #wrap {
   width: 100%;
   height: auto;
@@ -481,14 +503,14 @@ h5 {
   background: #cc7f00;
 }
 .form-horizontal {
-    margin-left: 14%; 
+    margin-left: 14%;
 }
 
 
 /*Cometarios */
 
 /* Carousel */
-#quote-carousel 
+#quote-carousel
 {
   padding: 0 10px 30px 10px;
   margin-top: 40px;
@@ -504,22 +526,22 @@ h5 {
   margin-top: 30px;
 }
 /* Previous button  */
-#quote-carousel .carousel-control.left 
+#quote-carousel .carousel-control.left
 {
   left: -12px;
 }
 /* Next button  */
-#quote-carousel .carousel-control.right 
+#quote-carousel .carousel-control.right
 {
   right: -12px !important;
 }
 
 /* Changes the color of the indicators */
-#quote-carousel .carousel-indicators li 
+#quote-carousel .carousel-indicators li
 {
   background: #c0c0c0;
 }
-#quote-carousel .carousel-indicators .active 
+#quote-carousel .carousel-indicators .active
 {
   background: #220d66;
 }
@@ -531,7 +553,7 @@ h5 {
 /* End carousel */
 
 .item blockquote {
-    border-left: none; 
+    border-left: none;
     margin: 0;
 }
 
@@ -553,22 +575,22 @@ h5 {
 */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-    #quote-carousel 
+@media (min-width: 768px) {
+    #quote-carousel
     {
       margin-bottom: 0;
       padding: 0 40px 30px 40px;
     }
-    
+
 }
 
 /* Small devices (tablets, up to 768px) */
-@media (max-width: 768px) { 
-    
+@media (max-width: 768px) {
+
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
-    
+
     #quote-carousel .carousel-indicators {
-        bottom: -20px !important;  
+        bottom: -20px !important;
     }
     #quote-carousel .carousel-indicators li {
         display: inline-block;
@@ -581,7 +603,7 @@ h5 {
         width: 20px;
         height: 20px;
     }
-}  
+}
 
 .panel-login {
     border-color: #ccc;
@@ -686,11 +708,11 @@ h5 {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Roboto', sans-serif;
     -webkit-transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);    
+          transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
     .header{
         background: #607D8B;
-        
+
         }
       .headline {
         color: #FFFFFF;
@@ -715,7 +737,7 @@ h5 {
 }
 
 .card-body{
- margin:1em;   
+ margin:1em;
 }
 
 .pull-left {
@@ -774,5 +796,5 @@ h5 {
     margin-left:5em;
     border-bottom: 1px #2196F3;
     color:#fff;
-   
+
 }

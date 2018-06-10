@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Place;
@@ -27,7 +28,10 @@ class PlacesController extends Controller
      */
     public function create()
     {
-        return view('places.create');
+        $data = [
+            'categories' => Category::all(),
+        ];
+        return view('places.create',$data);
     }
 
     /**
@@ -39,6 +43,7 @@ class PlacesController extends Controller
     public function store(Request $request)
     {
         Auth::user()->places()->create($request->all());
+        return redirect('places')->with('message', 'Lugar salvo com sucesso');
     }
 
     /**
@@ -65,7 +70,11 @@ class PlacesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'place' => Place::findOrFail($id),
+            'categories' => Category::all(),
+        ];
+        return view('places.create',$data);
     }
 
     /**
@@ -89,14 +98,15 @@ class PlacesController extends Controller
     public function destroy($id)
     {
         $place = Place::destroy($id);
-        //TODO: colocar msg de retorno
-        return back();
+        return response()->json('Lugar deletado com sucesso');
     }
 
     public function apiBuscaLugares(Request $request)
     {
-        // CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
-        // TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+        /*
+        *  CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
+        *  TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+       */
         //TODO: terminar o filtro com post
         $places = Place::all();
         $places_cat = Place::all()->where('category_id', $request->filter);
