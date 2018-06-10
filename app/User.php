@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Place','favorite','user_id','place_id');
     }
 
+    public function evaluation()
+    {
+        return $this->belongsToMany('App\Place');
+    }
+
     public function isCompany()
     {
         return $this->tipo;
