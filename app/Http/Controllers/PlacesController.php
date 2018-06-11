@@ -30,6 +30,7 @@ class PlacesController extends Controller
     {
         $data = [
             'categories' => Category::all(),
+            'action' => 'store',
         ];
         return view('places.create',$data);
     }
@@ -73,6 +74,7 @@ class PlacesController extends Controller
         $data = [
             'place' => Place::findOrFail($id),
             'categories' => Category::all(),
+            'action' => 'update',
         ];
         return view('places.create',$data);
     }
@@ -86,7 +88,9 @@ class PlacesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $place = Place::findorfail($id);
+        $place->update($request->except('_method','_token'));
+        return redirect('places')->with('message', 'Lugar editado com sucesso');
     }
 
     /**

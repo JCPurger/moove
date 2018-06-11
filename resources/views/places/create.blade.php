@@ -4,7 +4,8 @@
 @section('content')
 
     <div class="col-lg-10 well lugar-cadas">
-        <form class="form-cadas" action="{{ route('places.store') }}" enctype="multipart/form-data" method="POST" role="form">
+        <form class="form-cadas" action="{{ $action == 'store' ? route('places.'.$action) : route('places.'.$action,$place->id) }}" enctype="multipart/form-data" method="POST" role="form">
+            {{ $action == 'update' ? method_field('PUT') : '' }}
             {{ csrf_field() }}
             <div class="col-sm-10">
                 <div class="row">
