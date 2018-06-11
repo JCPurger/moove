@@ -12,8 +12,8 @@ class LugarTableSeeder extends Seeder
     public function run()
     {
         DB::table('place')->insert([
-        	'latitude' => "-19.212355602107472",
-            'longitude' => '-44.57636812499999',
+        	'latitude' => "-22.9036391",
+            'longitude' => '-43.1842203',
             'nome' => 'restaurante 01',
             'descricao' => 'descricao de teste 01',
             'imagem' => 'default.png',
@@ -23,8 +23,8 @@ class LugarTableSeeder extends Seeder
 
 
         DB::table('place')->insert([
-        	'latitude' => "-22.618827234831404",
-            'longitude' => '-42.57636812499999',
+        	'latitude' => "-23.0000961",
+            'longitude' => '-43.3839735',
             'nome' => 'hospital 01',
             'descricao' => 'descricao de teste 02',
             'imagem' => 'default.png',
@@ -34,8 +34,8 @@ class LugarTableSeeder extends Seeder
 
 
         DB::table('place')->insert([
-        	'latitude' => "-22.57825604463875",
-            'longitude' => '-48.68476656249999',
+        	'latitude' => "-22.8922428",
+            'longitude' => '-43.3243146',
             'nome' => 'restaurante 02',
             'descricao' => 'descricao de teste 03',
             'imagem' => 'default.png',
