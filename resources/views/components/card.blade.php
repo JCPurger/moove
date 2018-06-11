@@ -18,26 +18,26 @@
                      <!-- Trocar o $favorite por algo de voto negativo-->
                      @if(Auth::check())
                      @if($favorite)<!-- Se o cara estiver logado e ja tiver curtido...-->
-                     <i class="fa fa-thumbs-down fa-2x pull-right" style="color: #FF0000;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
+                     <i class="fa fa-thumbs-down fa-2x pull-right icones" style="color: #FF0000;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
                      @else<!-- Se nao tiver curtido... -->
-                     <i class="fa fa-thumbs-down fa-2x pull-right" style="color: #7a7a7a;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
+                     <i class="fa fa-thumbs-down fa-2x pull-right icones" style="color: #7a7a7a;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
                      @endif
                      @endif
 
                      <!-- Trocar o $favorite por algo de voto positivo-->
                      @if(Auth::check())
                      @if($favorite)<!-- Se o cara estiver logado e ja tiver curtido...-->
-                     <i class="fa fa-thumbs-up fa-2x pull-right" style="color: #1a29f2;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}" ></i>
+                     <i class="fa fa-thumbs-up fa-2x pull-right icones" style="color: #1a29f2;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}" ></i>
                      @else<!-- Se nao tiver curtido... -->
-                     <i class="fa fa-thumbs-up fa-2x pull-right" style="color: #7a7a7a;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
+                     <i class="fa fa-thumbs-up fa-2x pull-right icones" style="color: #7a7a7a;" aria-hidden="true" id="add-vote" data-id="{{ $place->id }}"></i>
                      @endif
                      @endif
 
                      @if(Auth::check())
                      @if($favorite)
-                     <i class="fa fa-heart fa-2x pull-right" style="color: #FF0000;" aria-hidden="true" id="add-favorite" data-id="{{ $place->id }}"></i>
+                     <i class="fa fa-heart fa-2x pull-right icones" style="color: #FF0000;" aria-hidden="true" id="add-favorite" data-id="{{ $place->id }}"></i>
                      @else
-                     <i class="fa fa-heart fa-2x pull-right" style="color: #7a7a7a;" aria-hidden="true" id="add-favorite" data-id="{{ $place->id }}"></i>
+                     <i class="fa fa-heart fa-2x pull-right icones" style="color: #7a7a7a;" aria-hidden="true" id="add-favorite" data-id="{{ $place->id }}"></i>
                      @endif
                      @endif
                  </div>

@@ -416,12 +416,18 @@ h5 {
 }
 
 /* detalhes */
+
 .col-md-12{
     padding-left: 25%;
 }
 .card-text-desc{
+
     margin-left: 28%;
     text-align: center;
+
+  margin-left: 28%;
+  text-align: center;
+
 }
 
 .col-md-10 .desc{
@@ -438,7 +444,6 @@ h5 {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-
 #wrap {
   width: 100%;
   height: auto;
@@ -797,4 +802,9 @@ h5 {
     border-bottom: 1px #2196F3;
     color:#fff;
 
+}
+
+/*Card Mapa*/
+.icones{
+  margin-bottom: 10%;
 }
