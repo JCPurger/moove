@@ -7,9 +7,12 @@
             <a id="menu-toggle" href="#">Categorias<span id="main_icon"
                                                          class="glyphicon glyphicon-align-justify"></span></a>
         </li>
+        <li>
+            <a href="#" class="category-filter" data-id="0">Remover filtro</a>
+        </li>
         @foreach($categories as $category)
             <li>
-                <a href="#"><span class="badge">{{ $category->places()->count() }}
+                <a href="#" class="category-filter" data-id="{{ $category->id }}"><span class="badge">{{ $category->places()->count() }}
                     </span> {{ $category->nome }}</a>
             </li>
         @endforeach
@@ -41,7 +44,6 @@
 @section('scripts')
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-VqnebGrmB1-1Fft60pG-_yYvvQ4kcLE&callback=initMap"></script>
     <script src="/js/mapa.js"></script>
-
     <script type="text/javascript">
         $(window).on('load', function () {
             $('#thanksModal').modal('show');

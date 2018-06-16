@@ -13,7 +13,18 @@ class CreateCommentTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('comment', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('comentario');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('place_id');
+            //TODO: testar unique key dupla
+//            $table->unique(array('user_id', 'place_id'));
+
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('place_id')->references('id')->on('place')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +34,10 @@ class CreateCommentTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('comment', function (Blueprint $table) {
+            $table->dropForeign('comment_user_id_foreign');
+            $table->dropForeign('comment_place_id_foreign');
+        });
+        Schema::dropIfExists('comment');
     }
 }

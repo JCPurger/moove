@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Place;
+use App\Category;
+use App\Services\Upload;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PlacesController extends Controller
@@ -32,7 +33,7 @@ class PlacesController extends Controller
             'categories' => Category::all(),
             'action' => 'store',
         ];
-        return view('places.create',$data);
+        return view('places.create', $data);
     }
 
     /**
@@ -43,7 +44,16 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        Auth::user()->places()->create($request->all());
+        $data = [
+            "nome" => $request->nome,
+            "category_id" => $request->category_id,
+            "descricao" => $request->descricao,
+            "latitude" => $request->latitude,
+            "longitude" => $request->longitude,
+            "imagem" => Upload::uploadFile($request->file('imagem')),
+        ];
+
+        Auth::user()->places()->create($data);
         return redirect('places')->with('message', 'Lugar salvo com sucesso');
     }
 
@@ -76,7 +86,7 @@ class PlacesController extends Controller
             'categories' => Category::all(),
             'action' => 'update',
         ];
-        return view('places.create',$data);
+        return view('places.create', $data);
     }
 
     /**
@@ -89,7 +99,7 @@ class PlacesController extends Controller
     public function update(Request $request, $id)
     {
         $place = Place::findorfail($id);
-        $place->update($request->except('_method','_token'));
+        $place->update($request->except('_method', '_token'));
         return redirect('places')->with('message', 'Lugar editado com sucesso');
     }
 
