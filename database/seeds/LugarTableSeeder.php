@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class LugarTableSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class LugarTableSeeder extends Seeder
             'imagem' => 'default.png',
             'category_id' => 1,
             'user_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
 
@@ -30,6 +32,7 @@ class LugarTableSeeder extends Seeder
             'imagem' => 'default.png',
             'category_id' => 2,
             'user_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
 
@@ -41,6 +44,7 @@ class LugarTableSeeder extends Seeder
             'imagem' => 'default.png',
             'category_id' => 1,
             'user_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
     }
