@@ -13,7 +13,7 @@
                     <div class="lib-row">
                      <p class="card-text"><!--{{ $place->descricao }}-->A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio, sua história, etc.</p>
 
-                     <a href="{{ route('detailsPlace',$place->id) }}" class="btn btn-primary btn-sm" title="Ver Detalhes"><i class="fa fa-plus"></i></a>  
+                     <a href="{{ route('places.details',$place->id) }}" class="btn btn-primary btn-sm" title="Ver Detalhes"><i class="fa fa-plus"></i></a>
 
                      <!-- Trocar o $favorite por algo de voto negativo-->
                      @if(Auth::check())

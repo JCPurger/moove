@@ -105,28 +105,29 @@ class PlacesController extends Controller
         return response()->json('Lugar deletado com sucesso');
     }
 
+    public function news()
+    {
+        $places = Place::all()->sortByDesc('created_at')->take(20);
+        return view('places.news', ['places' => $places]);
+    }
+
     public function apiBuscaLugares(Request $request)
     {
-        /*
-        *  CRIAR UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
-        *  TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
-       */
-        //TODO: terminar o filtro com post
-        $places = Place::all();
-        $places_cat = Place::all()->where('category_id', $request->filter);
+        //  CRIA UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
+        //  TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
+        
+        $places_cat = Place::all()->where('category_id', $request->filtro);
         $places = $places_cat->count() == 0 ? Place::all() : $places_cat;
 
         $json = array();
-
         $favorite = false;
         foreach ($places as $key => $place) {
             if (Auth::check())
                 $favorite = Auth::user()->favorites->contains($place);
 
-            array_push($json, [
-                "place" => $place,
-                "template" => view('components.card', ['place' => $place, 'favorite' => $favorite])->render(),
-            ]);
+            $data = ['place' => $place, 'favorite' => $favorite];
+            $payload = ["place" => $place, "template" => view('components.card', $data)->render()];
+            array_push($json, $payload);
         };
 
         return response()->json($json, 200);

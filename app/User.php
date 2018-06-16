@@ -34,9 +34,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function comments()
+
+    public function isCompany()
     {
-        return $this->belongsToMany('App\Comment','comentario');
+        return $this->tipo;
     }
 
     public function places()
@@ -49,13 +50,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Place','favorite','user_id','place_id');
     }
 
+    public function comments()
+    {
+        return $this->belongsToMany('App\Place','comment','user_id','place_id')->withPivot('comentario');
+    }
+
     public function evaluation()
     {
         return $this->belongsToMany('App\Place');
-    }
-
-    public function isCompany()
-    {
-        return $this->tipo;
     }
 }

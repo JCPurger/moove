@@ -4,15 +4,25 @@
 @section('content')
 
     <div id="wrap">
-        <div class="card">
-            <img src="{{ @$place->imagem }}" style="width: 200px; height: 220px;">
-            <h3>{{ $place->nome }}</h3>
-            <hr/>
-            <p class="desc">{{ $place->descricao }}</p>
-            <div class="add"><a href="#coment">Comentar</a></div>
+        <div class="col-md-4 no-padding lib-item" data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-12">
+                        <img class="lib-img-show" src="{{ Storage::url(@$place->imagem) }}" style="width: 230px">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="lib-row lib-header desc">
+                            {{ @$place->nome }}
+                            <div class="lib-header-seperator-desc"></div>
+                        </div>
+                        <div class="lib-row lib-desc">
+                            <p class="card-text-desc">{{ @$place->descricao }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
     <!-- Comentários -->
     <div class="container">
         <div class="row">
@@ -84,13 +94,17 @@
         </div>
     </div>
     @if(Auth::check())
-        <form class="form-horizontal" role="form">
+        <a id="checkroute" href="{{ route('comments.create') }}" style="display: none;"></a>
+
+        <form action="{{ route('comments.store') }}" class="form-horizontal" id="send-comment" role="form" style="display: none;">
+            {{ csrf_field() }}
+            <input type="hidden" name="placeId" value="{{ $place->id }}">
             <div class="form-group" id="coment">
                 <label class="col-sm-2 control-label">
                     <img class="img-circle" src="{{ Storage::url($user->imagem_perfil) }}" style="width: 50px;height:50px;">
                 </label>
                 <div class="col-sm-10">
-                    <div id="summernote" placeholder="Seu comentário..."></div>
+                    <textarea id="summernote" name="comentario" placeholder="Seu comentário..."></textarea>
                 </div>
             </div>
 
@@ -107,14 +121,63 @@
 @endsection
 
 @section('scripts')
+    {{-- AO LOADAR PÁGINA VERIFICA SE JÁ EXISTE COMENTÁRIO--}}
     <script type="text/javascript">
-        // When the DOM is ready, run this function
-        $(document).ready(function () {
-            //Set the carousel options
-            $('#quote-carousel').carousel({
-                pause: true,
-                interval: 4000,
+        $(function() {
+            $.ajax({
+                type: "GET",
+                url: $('#checkroute').attr('href'),
+                data: {
+                    placeId: $("input[name='placeId']").val()
+                },
+                dataType: "json", // xml, html, script, json, jsonp, text
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data) {
+                    if (data) {
+                        $('#send-comment').remove();
+                    } else {
+                        $('#send-comment').show();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
             });
         });
+
+        $('body').on("submit", "#send-comment", function (e) {
+            e.preventDefault();
+            var el = $(this);
+            $.ajax({
+                type: "POST",
+                url: el.attr('action'),
+                data: {
+                    comentario: $("#summernote").code() ,
+                    placeId: $("input[name='placeId']").val()
+                },
+                dataType: "json", // xml, html, script, json, jsonp, text
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data) {
+                    if (data) {
+                        $('#send-comment').remove();
+                    } else {
+                        $('#send-comment').show();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+            });
+        });
+
+        $('#quote-carousel').carousel({
+            pause: true,
+            interval: 4000
+        });
+
     </script>
 @endsection

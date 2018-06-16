@@ -27,7 +27,7 @@
                                         </div>
                                         <div class="lib-row lib-desc">
                                             <p class="card-text">{{ $favorite->descricao }}</p>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('detailsPlace',$favorite->id) }}">Ver mais</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('places.details',$favorite->id) }}">Ver mais</a>
                                             <a  class="btn btn-danger l btn-sm destroyFavorite" href="{{ route('favorites.destroy',$favorite->id) }}">Excluir</a>
                                         </div>
                                     </div>
