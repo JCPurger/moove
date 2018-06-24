@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
 {
@@ -27,12 +27,16 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
-        ]);
+//        $validatedData = $request->validate([
+//            'title' => 'required|unique:posts|max:255',
+//            'body' => 'required',
+//        ]);
+        //TODO: TERMINAR UPDATE
+        $user = Auth::user();
+        dd($user->update($request->all()));
+        dd($request->all());
 
     }
 

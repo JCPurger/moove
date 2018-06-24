@@ -35,55 +35,78 @@
                 <div class="carousel slide" data-ride="carousel" id="quote-carousel">
                     <!-- Bottom Carousel Indicators -->
                     <ol class="carousel-indicators">
-                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#quote-carousel" data-slide-to="1"></li>
-                        <li data-target="#quote-carousel" data-slide-to="2"></li>
+                        @foreach($comments as $key => $comment)
+                            @if($key == 0)
+                                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                            @else
+                                <li data-target="#quote-carousel" data-slide-to="{{ $key }}"></li>
+                            @endif
+                        @endforeach
                     </ol>
 
                     <!-- Carousel Slides / Comments -->
                     <div class="carousel-inner">
-                        <!-- Comment 1 -->
-                        <div class="item active">
+                        @foreach($comments as $key => $comment)
+                        @if($key == 0)
+                            <div class="item active">
+                        @else
+                            <div class="item">
+                        @endif
                             <blockquote>
                                 <div class="row">
                                     <div class="col-sm-3 text-center">
                                         <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
                                     </div>
                                     <div class="col-sm-9">
-                                        <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-                                        <small>Pessoa Um</small>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        <!-- Comment 2 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
+                                        <p>{{ $comment->pivot->comentario }}</p>
                                         <small>Pessoa Dois</small>
                                     </div>
                                 </div>
                             </blockquote>
                         </div>
-                        <!-- Comment 3 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan.</p>
-                                        <small>Pessoa Três</small>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
+                        @endforeach
+                        <!-- Comment 1 -->
+                        {{--<div class="item active">--}}
+                            {{--<blockquote>--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-sm-3 text-center">--}}
+                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                        {{--<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>--}}
+                                        {{--<small>Pessoa Um</small>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</blockquote>--}}
+                        {{--</div>--}}
+                        {{--<!-- Comment 2 -->--}}
+                        {{--<div class="item">--}}
+                            {{--<blockquote>--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-sm-3 text-center">--}}
+                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>--}}
+                                        {{--<small>Pessoa Dois</small>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</blockquote>--}}
+                        {{--</div>--}}
+                        {{--<!-- Comment 3 -->--}}
+                        {{--<div class="item">--}}
+                            {{--<blockquote>--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-sm-3 text-center">--}}
+                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan.</p>--}}
+                                        {{--<small>Pessoa Três</small>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</blockquote>--}}
+                        {{--</div>--}}
                     </div>
 
                     <!-- Carousel Buttons Next/Prev -->
@@ -93,6 +116,7 @@
             </div>
         </div>
     </div>
+
     @if(Auth::check())
         <a id="checkroute" href="{{ route('comments.create') }}" style="display: none;"></a>
 
@@ -118,11 +142,19 @@
             </div>
         </form>
     @endif
+
 @endsection
 
 @section('scripts')
     {{-- AO LOADAR PÁGINA VERIFICA SE JÁ EXISTE COMENTÁRIO--}}
     <script type="text/javascript">
+        $( window ).on('load',function(){
+            $('#quote-carousel').carousel({
+                pause: true,
+                interval: 4000
+            });
+        });
+
         $(function() {
             $.ajax({
                 type: "GET",
@@ -172,11 +204,6 @@
 
                 }
             });
-        });
-
-        $('#quote-carousel').carousel({
-            pause: true,
-            interval: 4000
         });
 
     </script>

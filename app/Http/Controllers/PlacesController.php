@@ -65,9 +65,11 @@ class PlacesController extends Controller
      */
     public function show($id)
     {
+        $place = Place::findOrFail($id);
         $data = [
-            'place' => Place::findOrFail($id),
+            'place' => $place,
             'user' => Auth::user(),
+            'comments' => $place->comments()->limit(3)->get(),
         ];
 
         return view('places.details', $data);
@@ -125,21 +127,34 @@ class PlacesController extends Controller
     {
         //  CRIA UM JSON COM ARRAY DE PLACES ,CADA UM COM 1 PONTO E 1
         //  TEMPLATE COM CONTEUDO INJETADO PARA RETORNAR PARA O JS
-        
         $places_cat = Place::all()->where('category_id', $request->filtro);
         $places = $places_cat->count() == 0 ? Place::all() : $places_cat;
 
         $json = array();
         $favorite = false;
         foreach ($places as $key => $place) {
-            if (Auth::check())
+            $positive = $negative = "#7a7a7a";
+            if (Auth::check()){
                 $favorite = Auth::user()->favorites->contains($place);
+                $vote = Auth::user()->evaluations()->get()->where('id', $place->id)->first();
+                if($vote != null) {
+                    if($vote->getOriginal('pivot_tipo') == 1)
+                        $positive = "#1a29f2";
+                    else if($vote->getOriginal('pivot_tipo') == 0)
+                        $negative = "#FF0000";
+                }
+            }
 
-            $data = ['place' => $place, 'favorite' => $favorite];
+            $data = [
+                'place' => $place,
+                'favorite' => $favorite,
+                'positive' => $positive,
+                'negative' => $negative
+            ];
+
             $payload = ["place" => $place, "template" => view('components.card', $data)->render()];
             array_push($json, $payload);
-        };
-
+        }
         return response()->json($json, 200);
     }
 }

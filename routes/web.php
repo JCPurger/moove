@@ -40,5 +40,9 @@ Route::get('/places/{id}', 'PlacesController@show')->name('places.details');
 Route::get('/api/test', 'PlacesController@apiBuscaLugares');//TODO: remover esse despois dos testes
 Route::post('/places/api/getAll', 'PlacesController@apiBuscaLugares')->name('postAllPlaces');
 
+//AVALIACAO E RANK
+Route::get('/ranking','EvaluateController@index');
+Route::post('/evaluate','EvaluateController@store');
+
 //ROTA PARA PAGINAS GENERICAS (NA PAGINA TEMP)
 Route::get('/{page?}', 'FrontendController@show');

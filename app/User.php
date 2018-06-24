@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nome','email','password','imagem_perfil','data_nascimento','tipo','cpf','cnpj','endereco'
+        'nome','email','password','imagem_perfil','data_nascimento','tipo','cpf','cnpj','endereco','pivot_tipo'
     ];
 
     /**
@@ -55,8 +55,18 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Place','comment','user_id','place_id')->withPivot('comentario');
     }
 
-    public function evaluation()
+    public function evaluations()
     {
-        return $this->belongsToMany('App\Place');
+        return $this->belongsToMany('App\Place','evaluation','user_id','place_id')->withPivot('tipo');
+    }
+
+    public function positive()
+    {
+        return $this->belongsToMany('App\Place','evaluation','user_id','place_id')->wherePivot('tipo',1);
+    }
+
+    public function negative()
+    {
+        return $this->belongsToMany('App\Place','evaluation','user_id','place_id')->wherePivot('tipo',0);
     }
 }

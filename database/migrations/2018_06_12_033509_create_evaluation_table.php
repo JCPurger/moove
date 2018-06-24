@@ -13,7 +13,16 @@ class CreateEvaluationTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('evaluation', function (Blueprint $table) {
+            $table->increments('id');
+            $table->boolean('tipo');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('place_id');
+
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('place_id')->references('id')->on('place')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,10 @@ class CreateEvaluationTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('evaluation', function (Blueprint $table) {
+            $table->dropForeign('evaluation_user_id_foreign');
+            $table->dropForeign('evaluation_place_id_foreign');
+        });
+        Schema::dropIfExists('evaluation');
     }
 }

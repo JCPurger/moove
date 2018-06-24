@@ -8,6 +8,7 @@ use App\Place;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {

@@ -1,7 +1,8 @@
 var map;
 var markers = [];
 
-function initMap() {
+function initMap()
+{
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: new google.maps.LatLng(-22.9012387, -43.2542323),
@@ -16,14 +17,12 @@ function initMap() {
 
     carregarPontos();
     addFavorito();
+    avaliar();
     filtro();
-
     // Carrega todos os pontos toda vez que o mapa for mexido
     // map.addListener('bounds_changed', function (e) {
     //     carregarPontos();
     // });
-
-    //TODO: onclick para avaliar
 
 }
 
@@ -31,16 +30,8 @@ function initMap() {
 /************************************
  *** INI FUNCOES DO PROJETO EM SI ***
  ************************************/
-
-function filtro() {
-    $('body').on('click', '.category-filter', function (e) {
-        e.preventDefault();
-        deleteMarkers();
-        carregarPontos($(this).data('id'));
-    });
-}
-
-function carregarPontos(filtro) {
+function carregarPontos(filtro)
+{
     $.ajax({
         type: 'POST',
         url: '/places/api/getAll',
@@ -116,8 +107,53 @@ function carregarPontos(filtro) {
         });
 }
 
-function addFavorito() {
-    $('body').on('click', '#add-favorite', function () {
+function avaliar()
+{
+    $('body').on('click', '.add-vote', function () {
+        console.log('ENVIANDO AVALIACAO !');
+        var $el = $(this);
+        var $id = $el.data('id');
+
+        $.ajax({
+            url: '/evaluate',
+            type: "POST",
+            dataType: "json",
+            data: {
+                id:     $id,
+                tipo:  $el.data('value')
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (data) {
+                if (data.status) {
+                    if ($el.data('value')) {
+                        $el.css('color', '#1a29f2');
+                    }else {
+                        $el.css('color', '#FF0000');
+                    }
+
+                    $el.siblings('.add-vote').css('color', '#7a7a7a');
+                }else {
+                    $el.css('color', '#7a7a7a');
+
+                    alert(data.msg);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            },
+            // called when the request finishes (after success and error callbacks are executed)
+            complete: function (jqXHR, textStatus) {
+
+            }
+        });
+    });
+}
+
+function addFavorito()
+{
+    $('body').on('click', '.add-favorite', function () {
         var $favoriteB = $(this);
         var $id = $favoriteB.data('id');
 
@@ -144,6 +180,15 @@ function addFavorito() {
             .always(function () {
 
             });
+    });
+}
+
+function filtro()
+{
+    $('body').on('click', '.category-filter', function (e) {
+        e.preventDefault();
+        deleteMarkers();
+        carregarPontos($(this).data('id'));
     });
 }
 
