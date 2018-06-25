@@ -23,6 +23,7 @@
                 </div>
                 <h3>Informações Pessoais</h3>
                 <form method="POST" action="{{ route('updateProfile') }}" class="form-horizontal" role="form">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Primeiro Nome:</label>
                         <div class="col-lg-8">
@@ -56,7 +57,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
-                            <input class="btn btn-danger" value="Salvar Mudanças" type="button">
+                            <input class="btn btn-danger" value="Salvar Mudanças" type="submit">
                             <span></span>
                             <input class="btn btn-default" value="Cancelar" type="reset">
                         </div>

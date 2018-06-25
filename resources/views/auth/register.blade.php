@@ -28,12 +28,16 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>Primeiro Nome</label>
+                                            <label>Nome</label>
                                             <input type="text" id="nome" name="nome" value="{{ old('nome') }}" placeholder="Enter First Name Here.." class="form-control">
                                         </div>
+                                        {{--<div class="col-sm-6 form-group">--}}
+                                            {{--<label>Último Nome</label>--}}
+                                            {{--<input type="text" id="sobrenome" name="sobrenome" value="{{ old('sobrenome') }}" placeholder="Enter Last Name Here.." class="form-control">--}}
+                                        {{--</div>--}}
                                         <div class="col-sm-6 form-group">
-                                            <label>Último Nome</label>
-                                            <input type="text" id="sobrenome" name="sobrenome" value="{{ old('sobrenome') }}" placeholder="Enter Last Name Here.." class="form-control">
+                                            <label>Data Nasc.</label>
+                                            <input type="date" id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento') }}"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -112,10 +116,10 @@
                                                        class="form-control">
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Website</label>
-                                            <input type="text" id="site" placeholder="Enter Website Name Here.." class="form-control">
-                                        </div>
+                                        {{--<div class="form-group">--}}
+                                            {{--<label>Website</label>--}}
+                                            {{--<input type="text" id="site" placeholder="Enter Website Name Here.." class="form-control">--}}
+                                        {{--</div>--}}
                                         <div class="col-sm-12 form-group">
                                             <label>Fotos</label>
                                             <input type="file" id="fotos" name="imagem_perfil" value="{{ old('imagem_perfil') }}" class="form-control">
