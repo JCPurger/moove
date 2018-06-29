@@ -26,27 +26,27 @@
                     {{ csrf_field() }}
                     <input type="file" name="imagem" class="text-center center-block well well-sm" style="display: none;">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Primeiro Nome:</label>
+                        <label class="col-lg-3 control-label">Nome:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="nome" value="{{ $user->nome }}" type="text">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Data nascimento:</label>
+                        <label class="col-lg-3 control-label">CNPJ:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" name="data_nascimento" value="{{ $user->data_nascimento }}" type="date">
+                            <input class="form-control" name="cnpj" value="{{ $user->cnpj }}" type="text">
                         </div>
                     </div>
-                    {{--<div class="form-group">--}}
-                        {{--<label class="col-lg-3 control-label">CPF:</label>--}}
-                        {{--<div class="col-lg-8">--}}
-                            {{--<input class="form-control" name="cpf" value="{{ $user->cpf }}" type="text">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="email" value="{{ $user->email }}" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Endereco:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="endereco" value="{{ $user->endereco }}" type="text">
                         </div>
                     </div>
                     <div class="form-group">

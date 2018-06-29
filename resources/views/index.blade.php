@@ -29,8 +29,9 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <img src="{{ asset('img/logo_p.png') }}" style="width: 200px;" class="modal-img">
-                        <h3 class="pt-5 mb-0 text-secondary">Bem vindo!</h3>
-                        <p class="pb-3 text-muted">Pronto para se mover?</p>
+                        {!! session('registered') !!}
+                        {{--<h3 class="pt-5 mb-0 text-secondary">Bem vindo!</h3>--}}
+                        {{--<p class="pb-3 text-muted">Agora você pode usufruir de todos os recursos =D</p>--}}
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-dismiss="modal">Vamos lá!</button>
                         </div>

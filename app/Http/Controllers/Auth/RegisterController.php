@@ -98,6 +98,9 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        return redirect($this->redirectTo)->with('registered','teste da parada');
+        $msg = "<h3 class=\"pt-5 mb-0 text-secondary\">Bem vindo!</h3>
+                <p class=\"pb-3 text-muted\">Agora você pode usufruir de todos os recursos =D</p>";
+
+        return redirect($this->redirectTo)->with('registered',$msg);
     }
 }
