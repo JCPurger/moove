@@ -15,8 +15,7 @@ class Upload extends Controller
      */
     public static function uploadFile(UploadedFile $file)
     {
-        if ($file->isValid()) {
+        if ($file->isValid())
             return $file->store('avatars', 'public');
-        }
     }
 }

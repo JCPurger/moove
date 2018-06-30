@@ -19,7 +19,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::has('places')->get();
         return view('index',['categories' => $categories]);
     }
 

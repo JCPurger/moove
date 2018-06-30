@@ -50,7 +50,9 @@ class UserProfileController extends Controller
             ]);
         }
 
-        $request->merge(['imagem_perfil' => Upload::uploadFile($request->file('imagem'))]);
+        if($request->file('imagem') != null)
+            $request->merge(['imagem_perfil' => Upload::uploadFile($request->file('imagem'))]);
+
         $user->update($request->all());
 
         return back();
