@@ -62,20 +62,20 @@
             <li><a href="{{ route('places.news') }}">Novidades</a></li>
 
             <!--BUSCAR-->
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                            <input type="text" class="  search-query form-control" placeholder="@lang('navigation.buscar')"/>
-                            <span class="input-group-btn">
-                            <button class="btn btn-danger" type="submit">
-                                <span class=" glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            {{--<form class="navbar-form navbar-left">--}}
+                {{--<div class="form-group">--}}
+                    {{--<div id="custom-search-input">--}}
+                        {{--<div class="input-group col-md-12">--}}
+                            {{--<input type="text" class="  search-query form-control" placeholder="@lang('navigation.buscar')"/>--}}
+                            {{--<span class="input-group-btn">--}}
+                            {{--<button class="btn btn-danger" type="submit">--}}
+                                {{--<span class=" glyphicon glyphicon-search"></span>--}}
+                            {{--</button>--}}
+                        {{--</span>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</form>--}}
             <!--BUSCAR-->
 
         </ul>
