@@ -3,20 +3,20 @@
 
 @section('content')
 
-    <div id="wrap">
-        <div class="col-md-4 no-padding lib-item" data-category="view">
+    <div id="wrap" style="margin-left: 30%;">
+        <div class="col-md-4 no-padding lib-item" data-category="view" style="width: 40.33333333%;">
             <div class="lib-panel">
                 <div class="row box-shadow">
-                    <div class="col-md-12">
-                        <img class="lib-img-show" src="{{ Storage::url(@$place->imagem) }}" style="width: 230px">
+                    <div class="lib-img-show" id="description" style="background-image: url('{{ Storage::url(@$place->imagem) }}');">
+                        {{--<img class="lib-img-show" src="{{ Storage::url(@$place->imagem) }}" style="width: 230px">--}}
                     </div>
-                    <div class="col-md-10">
-                        <div class="lib-row lib-header desc">
+                    <div class="col-md-12">
+                        <div class="lib-row lib-header desc centered">
                             {{ @$place->nome }}
-                            <div class="lib-header-seperator-desc"></div>
+                            {{--<div class="lib-header-seperator-desc" id="description"></div>--}}
                         </div>
                         <div class="lib-row lib-desc">
-                            <p class="card-text-desc">{{ @$place->descricao }}</p>
+                            <p class="card-text-desc centered">{{ @$place->descricao }}</p>
                         </div>
                     </div>
                 </div>
