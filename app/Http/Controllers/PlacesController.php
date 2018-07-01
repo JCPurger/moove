@@ -101,7 +101,15 @@ class PlacesController extends Controller
     public function update(Request $request, $id)
     {
         $place = Place::findorfail($id);
-        $place->update($request->except('_method', '_token'));
+        $data = [
+            "nome" => $request->nome,
+            "category_id" => $request->category_id,
+            "descricao" => $request->descricao,
+            "latitude" => $request->latitude,
+            "longitude" => $request->longitude,
+            "imagem" => $request->file('imagem') != NULL ? Upload::uploadFile($request->file('imagem')) : $place->imagem,
+        ];
+        $place->update($data);
         return redirect('places')->with('message', 'Lugar editado com sucesso');
     }
 

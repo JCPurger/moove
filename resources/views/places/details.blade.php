@@ -65,48 +65,6 @@
                             </blockquote>
                         </div>
                         @endforeach
-                        <!-- Comment 1 -->
-                        {{--<div class="item active">--}}
-                            {{--<blockquote>--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-sm-3 text-center">--}}
-                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-sm-9">--}}
-                                        {{--<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>--}}
-                                        {{--<small>Pessoa Um</small>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</blockquote>--}}
-                        {{--</div>--}}
-                        {{--<!-- Comment 2 -->--}}
-                        {{--<div class="item">--}}
-                            {{--<blockquote>--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-sm-3 text-center">--}}
-                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-sm-9">--}}
-                                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>--}}
-                                        {{--<small>Pessoa Dois</small>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</blockquote>--}}
-                        {{--</div>--}}
-                        {{--<!-- Comment 3 -->--}}
-                        {{--<div class="item">--}}
-                            {{--<blockquote>--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-sm-3 text-center">--}}
-                                        {{--<img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-sm-9">--}}
-                                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan.</p>--}}
-                                        {{--<small>Pessoa Três</small>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</blockquote>--}}
-                        {{--</div>--}}
                     </div>
 
                     <!-- Carousel Buttons Next/Prev -->
@@ -117,9 +75,8 @@
         </div>
     </div>
 
-    @if(Auth::check())
+    @if(Auth::check() && !Auth::user()->isCompany())
         <a id="checkroute" href="{{ route('comments.create') }}" style="display: none;"></a>
-
         <form action="{{ route('comments.store') }}" class="form-horizontal" id="send-comment" role="form" style="display: none;">
             {{ csrf_field() }}
             <input type="hidden" name="placeId" value="{{ $place->id }}">
@@ -144,6 +101,7 @@
     @endif
 
 @endsection
+
 
 @section('scripts')
     {{-- AO LOADAR PÁGINA VERIFICA SE JÁ EXISTE COMENTÁRIO--}}
@@ -205,6 +163,5 @@
                 }
             });
         });
-
     </script>
 @endsection

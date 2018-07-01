@@ -1,8 +1,8 @@
 <div class="col-md-11 no-padding lib-item" data-category="view" style="width: 87.666667%;">
     <div class="lib-panel">
         <div class="row box-shadow">
-            <div class="col-md-6">
-                <img class="img-responsive" src="{{ Storage::url(@$place->imagem) }}" width="250px" height="250px"/>
+            <div class="col-md-6" style="min-height: 255px;background-image: url('{{ Storage::url(@$place->imagem) }}');background-size: cover;background-repeat: no-repeat;background-position: center; ">
+                {{-- <img class="img-responsive" src="{{ Storage::url(@$place->imagem) }}" width="250px" height="250px"/> --}}
             </div>
             <div class="col-md-6">
                 <div class="lib-row lib-header">
@@ -10,7 +10,7 @@
                     <div class="lib-header-seperator"></div>
                 </div>
                 <div class="lib-row">
-                    <p class="card-text">{{ $place->descricao }}</p>
+                    <p class="card-text" style="height: 90px;max-height: 90px;overflow-y: scroll;">{{ $place->descricao }}</p>
 
                     <a href="{{ route('places.details',$place->id) }}" class="btn btn-primary btn-sm" title="Ver Detalhes"><i class="fa fa-plus"></i></a>
 
