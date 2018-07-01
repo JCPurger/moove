@@ -3,7 +3,7 @@
         <div class="lib-panel">
             <div class="row box-shadow">
                 <div class="col-md-6">
-                    <img class="img-responsive" src="{{ asset('/img/perfil.jpg') }}" width="250px" height="250px"/>
+                    <img class="img-responsive" src="{{ Storage::url(@$place->imagem) }}" width="250px" height="250px"/>
                 </div>
                 <div class="col-md-6">
                     <div class="lib-row lib-header">
@@ -11,8 +11,7 @@
                         <div class="lib-header-seperator"></div>
                     </div>
                     <div class="lib-row">
-                        <p class="card-text"><!--{{ $place->descricao }}-->A sessão Descrição da Empresa do plano de negócios deve apresentar um breve resumo da organização da sua empresa ou negócio,
-                            sua história, etc.</p>
+                        <p class="card-text">{{ $place->descricao }}</p>
 
                         <a href="{{ route('places.details',$place->id) }}" class="btn btn-primary btn-sm" title="Ver Detalhes"><i class="fa fa-plus"></i></a>
 
