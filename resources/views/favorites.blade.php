@@ -26,7 +26,7 @@
                                             <div class="lib-header-seperator"></div>
                                         </div>
                                         <div class="lib-row lib-desc">
-                                            <p class="card-text">{{ $favorite->descricao }}</p>
+                                            <p class="card-text">{{ str_limit($favorite->descricao,150) }}</p>
                                             <a class="btn btn-primary btn-sm" href="{{ route('places.details',$favorite->id) }}">Ver mais</a>
                                             <a  class="btn btn-danger l btn-sm destroyFavorite" href="{{ route('favorites.destroy',$favorite->id) }}">Excluir</a>
                                         </div>

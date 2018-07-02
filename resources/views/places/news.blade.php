@@ -37,7 +37,7 @@
                                     <td>{{ $place->created_at }}</td>
                                     <td>{{ $place->nome }}</td>
                                     <td>{{ $place->category()->first()->nome }}</td>
-                                    <td>{{ $place->descricao }}</td>
+                                    <td>{{ str_limit($place->descricao,60) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
