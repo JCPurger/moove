@@ -60,8 +60,8 @@
                                         <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
                                     </div>
                                     <div class="col-sm-9">
-                                        <p>{{ $comment->pivot->comentario }}</p>
-                                        <small>Pessoa Dois</small>
+                                        <p>{!! $comment->pivot->comentario !!}</p>
+                                        <small>{{ $comment->nome }}</small>
                                     </div>
                                 </div>
                             </blockquote>
@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
                 <a id="checkroute" href="{{ route('comments.create') }}" style="display: none;"></a>
-                <form action="{{ route('comments.store') }}" class="form-horizontal" id="send-comment" role="form" style="display: none;margin-left: 0;">
+                <form action="{{ route('comments.store') }}" method="POST" class="form-horizontal" id="send-comment" role="form" style="display: none;margin-left: 0;">
                     {{ csrf_field() }}
                     <input type="hidden" name="placeId" value="{{ $place->id }}">
                     <div class="form-group" id="coment">
@@ -142,31 +142,31 @@
             });
         });
 
-        $('body').on("submit", "#send-comment", function (e) {
-            e.preventDefault();
-            var el = $(this);
-            $.ajax({
-                type: "POST",
-                url: el.attr('action'),
-                data: {
-                    comentario: $("#summernote").code() ,
-                    placeId: $("input[name='placeId']").val()
-                },
-                dataType: "json", // xml, html, script, json, jsonp, text
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (data) {
-                    if (data) {
-                        $('#send-comment').remove();
-                    } else {
-                        $('#send-comment').show();
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-
-                }
-            });
-        });
+        // $('body').on("submit", "#send-comment", function (e) {
+        //     e.preventDefault();
+        //     var el = $(this);
+        //     $.ajax({
+        //         type: "POST",
+        //         url: el.attr('action'),
+        //         data: {
+        //             comentario: $("#summernote").code() ,
+        //             placeId: $("input[name='placeId']").val()
+        //         },
+        //         dataType: "json", // xml, html, script, json, jsonp, text
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function (data) {
+        //             if (data) {
+        //                 $('#send-comment').remove();
+        //             } else {
+        //                 $('#send-comment').show();
+        //             }
+        //         },
+        //         error: function (jqXHR, textStatus, errorThrown) {
+        //
+        //         }
+        //     });
+        // });
     </script>
 @endsection

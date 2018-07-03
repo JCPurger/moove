@@ -610,6 +610,13 @@ h5 {
     margin-right: 10px;
 }
 
+.item blockquote p:after {
+    content: "\f10e";
+    font-family: 'Fontawesome';
+    float: right;
+    margin-right: 10px;
+}
+
 /**
   MEDIA QUERIES
 */

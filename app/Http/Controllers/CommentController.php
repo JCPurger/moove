@@ -44,7 +44,7 @@ class CommentController extends Controller
             ->comments()
             ->attach($request->placeId, ['comentario' => $request->comentario]);
 
-        return response()->json($result);
+        return back();
     }
 
     /**
