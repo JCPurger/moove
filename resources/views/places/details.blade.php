@@ -25,55 +25,56 @@
                 </div>
             </div>
         </div>
-    <!-- Comentários -->
-    <div class="row">
-        <div class='col-md-offset-2 col-md-8 text-center'>
-            <h1>Veja o que as outras pessoas estão dizendo!</h1>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-md-offset-2 col-md-8'>
-            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                <!-- Bottom Carousel Indicators -->
-                <ol class="carousel-indicators">
-                    @foreach($comments as $key => $comment)
-                        @if($key == 0)
-                            <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-                        @else
-                            <li data-target="#quote-carousel" data-slide-to="{{ $key }}"></li>
-                        @endif
-                    @endforeach
-                </ol>
 
-                <!-- Carousel Slides / Comments -->
-                <div class="carousel-inner">
-                    @foreach($comments as $key => $comment)
-                    @if($key == 0)
-                        <div class="item active">
-                    @else
-                        <div class="item">
-                    @endif
-                        <blockquote>
-                            <div class="row">
-                                <div class="col-sm-3 text-center">
-                                    <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
-                                </div>
-                                <div class="col-sm-9">
-                                    <p>{{ $comment->pivot->comentario }}</p>
-                                    <small>Pessoa Dois</small>
-                                </div>
-                            </div>
-                        </blockquote>
-                    </div>
-                    @endforeach
-                </div>
-
-                <!-- Carousel Buttons Next/Prev -->
-                <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+    @if(!$comments->isEmpty())
+        <!-- Comentários -->
+        <div class="row">
+            <div class='col-md-offset-2 col-md-8 text-center'>
+                <h1>Veja o que as outras pessoas estão dizendo!</h1>
             </div>
         </div>
-    </div>
+        <div class='row'>
+            <div class='col-md-offset-2 col-md-8'>
+                <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                    <!-- Bottom Carousel Indicators -->
+                    <ol class="carousel-indicators">
+                        @foreach($comments as $key => $comment)
+                            @if($key == 0)
+                                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                            @else
+                                <li data-target="#quote-carousel" data-slide-to="{{ $key }}"></li>
+                            @endif
+                        @endforeach
+                    </ol>
+                    <!-- Carousel Slides / Comments -->
+                    <div class="carousel-inner">
+                        @foreach($comments as $key => $comment)
+                        @if($key == 0)
+                            <div class="item active">
+                        @else
+                            <div class="item">
+                        @endif
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-3 text-center">
+                                        <img class="img-circle" src="/img/perfil.jpg" style="width: 100px;height:100px;">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p>{{ $comment->pivot->comentario }}</p>
+                                        <small>Pessoa Dois</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        @endforeach
+                    </div>
+                    <!-- Carousel Buttons Next/Prev -->
+                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                    <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    @endif
 
     @if(Auth::check() && !Auth::user()->isCompany())
         <div class="row">
