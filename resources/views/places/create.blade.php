@@ -4,14 +4,14 @@
 @section('content')
 
     <div class="col-lg-10 well lugar-cadas">
-        <form class="form-cadas" action="{{ $action == 'store' ? route('places.'.$action) : route('places.'.$action,$place->id) }}" enctype="multipart/form-data" method="POST" role="form">
+        <form class="form-cadas" action="{{ $action == 'store' ? route('places.'.$action) : route('places.'.$action,$place->id) }}" enctype="multipart/form-data" method="POST" role="form"  autocomplete="off">
             {{ $action == 'update' ? method_field('PUT') : '' }}
             {{ csrf_field() }}
             <div class="col-sm-10">
                 <div class="row">
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do lugar" value="{{ old('nome',@$place->nome) }}">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do lugar" value="{{ old('nome',@$place->nome) }}" autocomplete='name'>
                     </div>
 
                     <div class="row">
@@ -34,7 +34,8 @@
                     <div class="row">
                         <div class="form-group">
                             <label style="margin-left: 2%;">Descrição</label>
-                            <textarea id="wmd-input" class="wmd-input processed" name="descricao" style="width: 94%; opacity: 1; height: 120px; margin-left: 3%;">{{ old('descricao',@$place->descricao) }}</textarea>
+                            <textarea id="wmd-input" class="form-control wmd-input processed" name="descricao"
+                                      style="width: 94%; opacity: 1; height: 120px; margin-left: 3%;">{{ old('descricao',@$place->descricao) }}</textarea>
                         </div>
                     </div>
 
@@ -45,13 +46,18 @@
                         <div class="form-group">
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
-                                    <input type="text" id="geo-busca-valor" class="search-query form-control" placeholder="Busque para autocompleta latide e longitude"/>
+                                    <input type="text" id="geo-busca-valor" class="search-query form-control" placeholder="Busque para autocompletar os campos abaixo"/>
                                     <span class="input-group-btn">
-                            <button class="btn btn-danger" type="button" id="geo-busca">
-                                <span class=" glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+                                        <button class="btn btn-danger" type="button" id="geo-busca">
+                                            <span class=" glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12"><label for="">Endereco completo</label>
+                                <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereco completo" value="{{ old('endereco') }}" autocomplete='street-address' disabled>
                             </div>
                         </div>
                         <div class="row">
@@ -68,7 +74,6 @@
 
                     <button type="submit" class="btn btn-lg btn-danger">Salvar</button>
                 </div>
-
             </div>
         </form>
     </div>
@@ -77,11 +82,10 @@
 
 @section('scripts')
     <script>
-
         /*
-         *  BUSCA VIA AJAX PARA AUTOCOMPLETAR A LATITUDE E LONGITUDE
-         */
-        $('#geo-busca').on('click', function () {
+        *  BUSCA VIA AJAX PARA AUTOCOMPLETAR A LATITUDE E LONGITUDE
+        */
+        function searchGeolocation(){
             var busca = $('#geo-busca-valor').val().replace(new RegExp(' ', 'g'), '+');
 
             $.ajax({
@@ -93,20 +97,39 @@
                 },
                 dataType: "json", // xml, html, script, json, jsonp, text
                 success: function (data) {
-                    result = data['results'][0];
                     console.log(data);
-                    $('input[name="latitude"]').val(result['geometry']['location']['lat']);
-                    $('input[name="longitude"]').val(result['geometry']['location']['lng']);
-
+                    var result = data['results'][0];
+                    isRio = false;
+                    result['address_components'].forEach(function (value) {
+                        if (value['types'][0] == "administrative_area_level_2") {
+                            if (value['long_name'] == "Rio de Janeiro") {
+                                isRio = true;
+                            }
+                        }
+                    });
+                    if (!isRio) {
+                        alert('O local buscado deve estar dentro da área da cidade do Rio de Janeiro');
+                    } else {
+                        $('input[name="latitude"]').val(result['geometry']['location']['lat']);
+                        $('input[name="longitude"]').val(result['geometry']['location']['lng']);
+                        $('input[name="endereco"]').val(result['formatted_address']);
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log('DEU RUIM !');
+                    alert('Os campos não puderam ser preenchidos, tente novamente mais tarde.');
                 },
                 // called when the request finishes (after success and error callbacks are executed)
                 complete: function (jqXHR, textStatus) {
 
                 }
             });
+        }
+
+        /*
+         * AO CLICAR NO ICONE DE BUSCA DISPARA A FUNCAO DO GEOLOCATION
+         */
+        $('#geo-busca').on('click', function () {
+            searchGeolocation();
         });
     </script>
 @endsection

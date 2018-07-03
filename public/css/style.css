@@ -849,25 +849,25 @@ h5 {
     width: 86.2%;
 }
 
-.card-map .col-md-6.img{
+.card-map .col-md-6.img {
     min-height: 280px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.card-map h2{
+.card-map h2 {
     font-size: 28px;
 }
 
-.card-map .card-text{
+.card-map .card-text {
     width: 235px;
     min-height: 30px;
     max-height: 120px;
     overflow-y: auto;
 }
 
-.card-map .user-controls{
+.card-map .user-controls {
     width: 220px;
     bottom: 0;
     position: absolute;
