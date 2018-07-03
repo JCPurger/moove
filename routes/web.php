@@ -13,6 +13,7 @@
 
 Auth::routes();
 Route::get('/', 'FrontendController@index');
+Route::get('/contato',function(){ return view('temp.contato'); })->name('contact');
 Route::get('/lang/{lang?}', 'FrontendController@changeLang');
 //AREA DO USUARIO NORMAL
 Route::group(['middleware' => ['user', 'auth']], function () {
