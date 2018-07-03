@@ -41,7 +41,7 @@
 <script src="{{ asset('/js/summernote.min.js') }}"></script>
 <script>
     $('#summernote').summernote({
-        width: 650,
+        width: 600,
         height:100, //set editable area's height
         toolbar:[//[groupName,[list of button]]]
         ['style',['bold','italic','underline']]]
