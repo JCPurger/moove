@@ -1,44 +1,44 @@
-version: '2'
-networks:
-  web:
-  banco:
+version: '3'
+
 services:
-  web:
-    image: webdevops/php-nginx-dev:7.1
-    ports:
-      - 80:80
+
+  db:
+    image: mariadb
     volumes:
-      - ../:/app
-    working_dir: /app
-    networks:
-      - web
-      - banco
-    links:
-      - mysql
+      - db:/var/lib/mysql
     environment:
-      PHP_DISPLAY_ERRORS: 1
-      PHP_UPLOAD_MAX_FILESIZE: 240M
-      WEB_DOCUMENT_ROOT: /app/public
-  mysql:
-    image: mysql:5.7
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=laraveldb
+
+  app:
+    build: .
+    image: brunocascio/laravel-dev
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config:/var/www/html/config
+      - ./database:/var/www/html/database
+      - ./public:/var/www/html/public
+      - ./resources:/var/www/html/resources
+      - ./routes:/var/www/html/routes
+      - ./tests:/var/www/html/tests
+      - ./phpunit.xml:/var/www/html/phpunit.xml
     ports:
-      - 3306:3306
-    volumes:
-      - ./mysql/data:/var/lib/mysql
-    networks:
-      - banco
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: moove
-  workspace:
-    build: workspace
-    volumes:
-      - ../:/app
-    working_dir: /app
-    networks:
-      - web
-      - banco
+      - 8000:8000
+    command: php artisan serve --host 0.0.0.0
     depends_on:
-      - web
-    links:
-      - mysql
+      - db
+    environment:
+      - APP_NAME=Laravel
+      - APP_ENV=local
+      - APP_KEY=base64:inZfyLJY7AG7gMZqHt5JgeGWnqRX2HnEie0WZ9nqV0Y=
+      - APP_DEBUG=true
+      - APP_LOG=single
+      - APP_LOG_LEVEL=debug
+      - APP_URL=http://localhost
+      - DB_HOST=db
+      - DB_DATABASE=laraveldb
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+
+volumes:
+  db:
